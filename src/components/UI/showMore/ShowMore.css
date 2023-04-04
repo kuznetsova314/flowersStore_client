@@ -1,0 +1,17 @@
+.showMore {
+    font-size: 1.6rem;
+    color: var(--color-green);
+    text-align: center;
+}
+.showMore:hover {
+    text-decoration: dotted underline;
+}
+
+.showMore__gray{
+    color: #BDBDBD;
+    font-size: 1.4rem;
+    text-align: center;
+}
+.showMore__gray:hover {
+    text-decoration: dotted underline;
+}

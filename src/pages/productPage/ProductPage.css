@@ -1,0 +1,101 @@
+.product__info {
+    padding: 3.4rem 0 12.7rem;
+}
+.pi__inner {
+    display: flex;
+    justify-content: space-between;
+}
+.pi__photo {
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    max-height: 51rem;
+}
+.pi__bigImg {
+    width: 45rem;
+    height: 42rem;
+    object-fit: cover;
+    display: block;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.pi__line {
+    display: flex;
+    margin: 2rem 0;
+}
+.pi__line img:first-child {
+    margin-left: 0;
+}
+.pi__line img:last-child {
+    margin-right: 0;
+}
+.pi__img {
+    width: 7.4rem;
+    height: 6.8rem;
+    object-fit: cover;
+    display: block;
+    overflow: hidden;
+    margin: 0 1rem;
+    opacity: .5;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.pi_img.active {
+    width: 7.4rem;
+    height: 6.8rem;
+    object-fit: cover;
+    display: block;
+    overflow: hidden;
+    margin: 0 1rem;
+    opacity: 1;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.pi__description {
+    width: 60%;
+    margin-left: 3.6rem;
+}
+.pi__header {
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+.pi__price {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    margin: 4.9rem 0 2rem 0;
+}
+.pi__title {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+.pi__ul {
+    margin: 1.9rem 0 1.8rem 0;
+}
+.pi__li {
+    list-style: none;
+    position: relative;
+    margin-bottom: .9rem;
+}
+.pi__li::before {
+    content: "";
+    display: block;
+    border-radius: 100%;
+    background-color: var(--color-green);
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    top: 30%;
+    left: -25px;
+}
+.pi__basket {
+    display: grid;
+    grid-template-columns: auto 2fr;
+    column-gap: 4rem;
+    margin-top: 2rem;
+}
+.pi__block {
+    font-weight: 700;
+}

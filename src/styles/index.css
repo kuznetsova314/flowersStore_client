@@ -1,0 +1,104 @@
+@font-face{
+    font-family: "Literal";
+    src: url("./fonts/Literal_Regular.otf") format("opentype");  
+}
+@font-face{
+    font-family: "Literal";
+    font-weight: bold;
+    src: url("./fonts/Literal_Bold.otf") format("opentype");  
+}
+@font-face{
+    font-family: "Literal";
+    font-weight: light;
+    src: url("./fonts/Literal_Light.otf") format("opentype");  
+}
+@font-face{
+    font-family: "Karton";
+    src: url("./fonts/karton.otf") format("opentype");  
+}
+@font-face{
+    font-family: "Roboto";
+    src: url("./fonts/Roboto_Regular.ttf") format("truetype");  
+}
+@font-face{
+    font-family: "Roboto";
+    font-weight: medium;
+    src: url("./fonts/Roboto_Medium.ttf") format("truetype");  
+}
+@font-face{
+    font-family: "Comforter";
+    src: url("./fonts/Comforter.ttf") format("truetype");  
+}
+html {
+    font-size: 62.5%;
+}
+
+body {
+    --color-primary: #F9F8FB;
+    --color-secondary: #5B4A58;
+    --color-white: #FFFFFF;
+    --color-green: #6AAE55;
+    --color-gray: #828282;
+    --color-brown: #746471;
+    --color-burgundy: #7E6579;
+    --color-tea: #F6FFF3;
+    --shadow: 0 4px 4px rgba(0, 0, 0, .25);
+
+    background-color: var(--color-primary);
+    font-size: 1.6rem;
+    color: var(--color-secondary);
+    line-height: 1.4;
+    font-family: "Literal";
+    margin: 0;
+    padding: 0;
+    
+}
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+    margin: 0;
+}
+p {
+    margin: 0;
+}
+main {
+    min-height: 60vh;
+    padding-top: 12.7rem;
+}
+
+.img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+    overflow: hidden;
+    object-fit: cover;
+    margin: auto;
+}
+
+.page {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.container {
+    max-width: 1140px;
+    width: 100%;
+    margin: 0 auto;
+    
+}
+.cur__inner {
+    margin: 4.4rem;
+}
+.cur__item {
+    color: var(--color-gray);
+    cursor: pointer;
+}
+.cur__item.active {
+    color: var(--color-secondary);
+    text-decoration: 1px solid #000;
+}

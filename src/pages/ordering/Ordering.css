@@ -1,0 +1,119 @@
+.order {
+    display: flex;
+    padding: 3.3rem 0 4rem;
+}
+.order__section {
+    
+    width: 60%;
+}
+
+.order__inner {
+    max-width: 66rem;
+}
+.order__header {
+    font-weight: 700;
+    font-size: 2.4rem;
+    margin-bottom: 2.7rem;
+}
+.order__item {
+    margin: 1rem auto;
+}
+.order__title {
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+}
+.order__block {
+    display: flex;
+    justify-content: space-between;
+}
+.order__inputDate {
+    border: none;
+    color: var(--color-secondary);
+    font-family: "Literal";
+    font-size: 1.6rem;
+    outline: none;
+    display: block;
+    max-width: 13rem;
+    min-width: 10rem;
+}
+.order__secrecy {
+    margin: 2rem 2rem 0;
+}
+
+.order__inputs {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 66rem;
+}
+.order__InputItem {
+    width: 48%;
+}
+.order__inputName {
+    margin: 2.4rem 0 .9rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+.order__input {
+    outline: none;
+    display: block;
+    border: 1px solid #E0E0E0;
+    background-color: #FAFAFA;
+    height: 4rem;
+    /* max-width: 27rem; */
+    width: 90%;
+    border-radius: 5px;
+    padding: 1rem;
+    font-size: 1.6rem;
+    font-family: "Literal";
+}
+.order__inputName input::placeholder {
+    color: var(--color-gray);
+}
+
+.order__inputNote {
+    width: 100%;
+    outline: none;
+    border: 1px solid #E0E0E0;
+    background-color: #FAFAFA;
+    border-radius: 5px;
+    padding: 1rem;
+    font-size: 1.6rem;
+    font-family: "Literal";
+}
+.order__contacts {
+    display: flex;
+    justify-content: space-between;
+}
+.order__btn {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+.basketMin__section {
+    width: 40%;
+    padding: 1rem 2.5rem;
+    margin-top: 4rem;
+    background-color: #F2F2F2;
+}
+.basketMin__header {
+    font-family: "Karton";
+    font-size: 3.2rem;
+}
+.basketMin__block {
+    text-align: center;
+    
+}
+.basketMin__text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    
+}
+.basketMin__text div {
+    font-size: 2.4rem;
+}
+.basketMin__link {
+    color: var(--color-green)
+}

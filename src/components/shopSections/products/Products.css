@@ -1,0 +1,17 @@
+.section__products {
+    width: 100%;
+    padding: 10rem 0;
+}
+.products {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+.product__group {
+    max-width: 75%;
+}
+.filter__group {
+    max-width: 25%;
+    
+}

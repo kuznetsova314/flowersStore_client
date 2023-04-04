@@ -1,0 +1,45 @@
+.ap__section {
+    background-color: var(--color-white);
+    padding: 7.7rem 0 8rem;
+    position: relative;
+}
+.br__left {
+    display: block;
+    object-fit: cover;
+    overflow: hidden;
+    position: absolute;
+    top: -20%;
+    left: -15%;
+    width: 373px;
+    height: 354px;
+    transform: rotate(150deg);
+}
+.br__right {
+    display: block;
+    object-fit: cover;
+    overflow: hidden;
+    position: absolute;
+    bottom: -10%;
+    right: -15%;
+    width: 373px;
+    height: 354px;
+    transform: rotate(-20deg);
+}
+
+.ap__header {
+    font-size: 2.4rem;
+    font-family: "Karton";
+    text-align: center;
+    margin-bottom: 4.8rem;
+}
+.ap__products {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.ap__center {
+    display: flex;
+    justify-content: center;
+    margin: 5rem auto 0;
+}

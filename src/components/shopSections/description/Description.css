@@ -1,0 +1,8 @@
+.description__section {
+    background-color: #F0F0F0;
+    padding: 5.9rem 0;
+}
+.description__text {
+    font-size: 1.6rem;
+    color: var(--color-gray);
+}

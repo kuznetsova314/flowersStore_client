@@ -1,0 +1,33 @@
+.basket__section {
+    padding: 3.3rem 0 10rem;
+}
+.basket__inner {
+    width: 80rem
+}
+.basket__title {
+    font-size: 3rem;
+    font-family: "Karton";
+    text-transform: uppercase;
+    margin: 3.6rem 0 4.2rem;
+}
+.basket__block {
+    display: flex;
+    justify-content: space-between;
+}
+.basket__promotion {
+    width: 50%;
+}
+.basket__link {
+    color: var(--color-green);
+}
+.basket__sum {
+    font-size: 1.8rem;
+}
+.basket__value {
+    font-size: 2.4rem;
+}
+.basket__center {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 3rem;
+}

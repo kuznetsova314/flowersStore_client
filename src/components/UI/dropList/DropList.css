@@ -1,0 +1,50 @@
+.dl__list {
+    position: relative;
+    
+}
+.dl__block {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background-color: var(--color-white);
+}
+
+.dl__block.active {
+    display: flex;
+    flex-direction: column;
+}
+.dl__block.active .dl__angle {
+    transform: rotate(180deg);
+}
+.dl__btm{
+    text-decoration: none;
+    font-size: 1.6rem;
+    width: 100%;
+    padding: 1rem 2rem;
+    border-radius: 3px;
+    color: var(--color-secondary);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+.angle__up {
+    margin: 0 .5rem;
+    position: relative;
+    top: .3rem;
+    
+}
+.angle__down {
+    margin: 0 .5rem;
+    position: relative;
+    top: .3rem;
+    
+}
+.dl__block__nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background-color: var(--color-white);
+    margin: 1rem auto;
+}

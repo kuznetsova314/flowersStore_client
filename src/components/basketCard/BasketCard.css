@@ -1,0 +1,69 @@
+.basket__card {
+    width: 100%;
+    display: flex;
+    margin: 1rem 0;
+    justify-content: space-between;
+}
+.basket__img {
+    width: 20%;
+    display: flex;
+    margin-right: 1.5rem;
+}
+.basket__img img {
+    width: 11rem;
+    height: 11rem;
+    object-fit: cover;
+    overflow: hidden;
+    display: block;
+    border-radius: 10px;
+    margin: 0;
+}
+.basket__description {
+    width: 80%;
+    padding: 1.5rem 0;
+}
+.basket__info {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 1.1rem;
+    position: relative;
+    z-index: 1;
+}
+.basket__price {
+    display: flex;
+    align-items: center;
+}
+.basketItem__sum {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.basketMin__img {
+    width: 30%;
+    display: flex;
+    margin-right: 1.5rem;
+}
+.basketMin__img img {
+    width: 11rem;
+    height: 11rem;
+    object-fit: cover;
+    overflow: hidden;
+    display: block;
+    border-radius: 10px;
+    margin: 0;
+}
+.basket__span {
+    font-size: 1.2rem;
+    color: var(--color-gray);
+    margin-right: .5rem;
+}
+.basketMin__icon {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 5px;
+}
+

@@ -1,0 +1,26 @@
+.intro {
+    display: flex;
+    justify-content: center;
+    font-family: "Karton";
+    line-height: 1.2;
+    background: url("../../../images/intro_bg.png") center no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+    
+}
+.intro__inner {
+    width: 100%;
+    text-transform: uppercase;
+}
+.intro__subtitle {
+    font-size: 5rem;
+    margin: 1.7rem 0;
+    
+}
+.intro__title {
+    font-size: 15rem;
+    margin-bottom: 3rem;
+}

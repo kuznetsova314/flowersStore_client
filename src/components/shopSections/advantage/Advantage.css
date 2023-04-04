@@ -1,0 +1,34 @@
+.section__advantage {
+    background-color: var(--color-white);
+    width: 100%;
+    padding: 5.5rem 0;
+}
+.advantage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+.adv__item {
+    max-width: 20%;
+    margin: 4.5rem;
+    text-align: center;
+}
+.adv__item:hover {
+    transform: scale(1.5);
+}
+.adv__description {
+    max-width: 16.9rem;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--color-secondary);
+}
+.adv__img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+    object-fit: cover;
+    margin: 0 auto;
+    
+}

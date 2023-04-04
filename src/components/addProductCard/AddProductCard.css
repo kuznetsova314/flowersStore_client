@@ -1,0 +1,45 @@
+.ap__card {
+    width: 32%;
+    display: flex;
+}
+.ap__img {
+    width: 14.6rem;
+    height: 14.6rem;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+}
+.ap__img img {
+    display: block;
+    object-fit: cover;
+    overflow: hidden;
+}
+.ap__img::after {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    content: "";
+    border-radius: 10px;
+    width: 126px;
+    height: 126px;
+    border: 1px solid var(--color-white);
+    opacity: .5;
+    z-index: 10;
+}
+.ap__description {
+    height: 14.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.ap__title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+

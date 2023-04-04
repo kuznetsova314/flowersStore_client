@@ -1,0 +1,9 @@
+.myInput {
+    border: none;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #BDBDBD;
+    border-radius: 10px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+    padding: 1.3rem 2.5rem;
+}

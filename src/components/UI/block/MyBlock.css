@@ -1,0 +1,22 @@
+.myBlock-small {
+    padding: 1.8rem 1.4rem 2.3rem;
+    background-color: var(--color-white);
+    border-radius: 10px;
+}
+.myBlock-medium {
+    background-color: var(--color-white);
+    border-radius: 10px;
+    width: 19.4rem;
+    height: 6rem;
+    
+}
+.myBlock-flex {
+    background-color: var(--color-white);
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 2.5rem;
+    background-color: var(--color-white);
+}

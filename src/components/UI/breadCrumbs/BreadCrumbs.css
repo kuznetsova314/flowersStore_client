@@ -1,0 +1,21 @@
+.bc__nav {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3.6rem;
+}
+.bc__block {
+    display: flex;
+    align-items: center;
+}
+.bc__text {
+    text-decoration: none;
+    color: var(--color-gray);
+    font-size: 1.4rem;
+    transition: opacity .1s linear;
+}
+.bc__text:hover {
+    opacity: .8;
+}
+.bc__icon {
+    margin: 0 .3rem;
+}

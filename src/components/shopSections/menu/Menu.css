@@ -1,0 +1,17 @@
+.menu__section {
+    background-color: var(--color-brown);
+    padding: 3.3rem 0;
+}
+.menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu__link {
+    color: var(--color-white);
+    text-decoration: none;
+    transition: opacity .1s linear;
+}
+.menu__link:hover {
+    opacity: .8;
+}

@@ -1,0 +1,73 @@
+.shopReviews__section {
+    background-color: var(--color-primary);
+    padding: 12rem 0;
+}
+.shopReviews {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.sr__photo {
+    max-width: 32%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.sr__group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.sr__title {
+    font-family: "Karton";
+    font-size: 2.6rem;
+}
+.sr_pictures {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.sr__img {
+    width: 16.8rem;
+    height: 16.8rem;
+    display: block;
+    object-fit: cover;
+    margin: 1.5rem 0;
+}
+
+.sr__text {
+    max-width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.sr__item {
+    margin: 2rem auto;
+    position: relative;
+    z-index: 1;
+}
+.sr__rating {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+}
+.sr__name{
+    font-size: 1.6rem;
+    color: var(--color-green);
+    font-weight: 700;
+}
+.sr__block {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    color: var(--color-gray);
+}
+.sr__date {
+    font-size: 1.2rem; 
+    margin-right: .5rem;
+}
+.sr__city {
+    font-size: 1.4rem;
+    font-family: "Roboto";
+}

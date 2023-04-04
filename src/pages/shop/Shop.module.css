@@ -1,0 +1,14 @@
+.img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+    object-fit: cover;
+    margin: 0 auto;
+    
+}
+
+
+
+
+

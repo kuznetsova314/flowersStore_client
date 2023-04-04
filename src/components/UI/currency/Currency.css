@@ -1,0 +1,11 @@
+.cur__inner {
+    margin: 4.4rem;
+}
+.cur__item {
+    color: var(--color-gray);
+    cursor: pointer;
+}
+.cur__item.active {
+    color: var(--color-secondary);
+    text-decoration: underline;
+}
