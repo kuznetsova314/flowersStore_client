@@ -7,8 +7,22 @@ export default class UserStore {
         this._isAuth = true
         this._isUser = false
         this._user = {}
+        this._promotion = 5
+        this._orders = [
+            {date: 1676847888, number: "1N30325", products: [{name: "Букет из разноцветных роз", size: "малый", count: 2, price: 1000}, {name: "Букет из разноцветных роз", size: "малый", count: 1, price: 2000}], orderSum: 44000, status: "delivered"},
+            {date: 1676847878, number: "1N30325", products: [{name: "Букет из разноцветных роз", size: "малый", count: 2, price: 1000}], orderSum: 2000, status: "handling"},
+            {date: 1676847856, number: "1N30325", products: [{name: "Букет из разноцветных роз", size: "малый", count: 2, price: 1000}, {name: "Букет из разноцветных роз", size: "малый", count: 1, price: 2000}], orderSum: 4000, status: "paid"},
+        ]
         makeAutoObservable(this)
     }
+    get ordersSum() {
+        return this.calcSum();
+    }
+    calcSum() {
+        let temp = this._orders.reduce((sum, item) => sum = sum + +item.orderSum, 0);
+        return temp;
+    }
+    
     setIsAuth(bool) {
         this._isAuth = bool
     }
@@ -24,6 +38,7 @@ export default class UserStore {
     setUser(user) {
         this._user = user
     }
+    
     get isAdmin() {
         return this._isAdmin
     }
@@ -39,4 +54,11 @@ export default class UserStore {
     get user() {
         return this._user
     }
+    get orders() {
+        return this._orders
+    }
+    get promotion() {
+        return this._promotion
+    }
+
 }

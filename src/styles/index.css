@@ -69,6 +69,12 @@ main {
     min-height: 60vh;
     padding-top: 12.7rem;
 }
+input {
+    outline: none;
+    display: block;
+    font-size: 1.6rem;
+    font-family: "Literal";
+}
 
 .img {
     max-width: 100%;

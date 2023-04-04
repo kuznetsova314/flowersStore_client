@@ -1,8 +1,6 @@
 import React from 'react';
 import "./Sidebar.css";
-import MyBlock from '../UI/block/MyBlock';
 import { FaRegEdit } from "react-icons/fa";
-import MyHr from '../UI/hr/MyHr';
 
 const Sidebar = ({list, onClick, variant}) => {
     

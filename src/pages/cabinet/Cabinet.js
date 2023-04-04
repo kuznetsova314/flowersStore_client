@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import BreadCrumbs from "../../components/UI/breadCrumbs/BreadCrumbs";
 import './Cabinet.css';
 import Sidebar from '../../components/sidebar/Sidebar';
+import CabinetProfile from '../../components/CabinetSections/profile/CabinetProfile';
+import CabinetOrders from '../../components/CabinetSections/orders/CabinetOrders';
+import CabinetChangePassword from '../../components/CabinetSections/changePassword/CabinetChangePassword';
 
 const Cabinet = () => {
     const [variant, setVariant] = useState("profile")
@@ -16,12 +20,11 @@ const Cabinet = () => {
                     {name: "Смена пароля", value: "changePassword"},
                  ]}/>
                 <div className='container'>
-                    
-                    {variant === "first" ? 
-                        <div className="cabinet__profile">first</div>
-                        : variant === "second" ?
-                        <div className="cabinet__profile">second</div>
-                        :<div className="cabinet__profile">third</div>
+                    {variant === "profile" ? 
+                        <CabinetProfile/>
+                        : variant === "orders" ?
+                        <CabinetOrders/>
+                        :<CabinetChangePassword/>
                     }
                 </div>
             </section>
