@@ -24,7 +24,7 @@ const Cabinet = () => {
                         <CabinetProfile/>
                         : variant === "orders" ?
                         <CabinetOrders/>
-                        :<CabinetChangePassword/>
+                        :<CabinetChangePassword setVariant={setVariant}/>
                     }
                 </div>
             </section>

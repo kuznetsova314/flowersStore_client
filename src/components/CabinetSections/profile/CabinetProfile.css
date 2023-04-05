@@ -129,9 +129,10 @@
     padding: .2rem 2rem;
     width: 16rem;
     display: flex;
+    cursor: pointer;
     justify-content: space-between;
 }
-.cp__inputs {
+.cp__amInner {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -144,7 +145,7 @@
     font-weight: 700;
     
 }
-.cp__amInput {
+.cp__amInfo {
     border: 1px solid #E0E0E0;
     background-color: #FAFAFA;
     height: 4rem;

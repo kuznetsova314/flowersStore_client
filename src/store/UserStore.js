@@ -6,7 +6,7 @@ export default class UserStore {
         this._isWorker = false
         this._isAuth = true
         this._isUser = false
-        this._user = {}
+        this._user = {fullName: "Валерий Меладзе", phone: "+7 123 456 78 90", city: "Москва", address: "Москва"}
         this._promotion = 5
         this._orders = [
             {date: 1676847888, number: "1N30325", products: [{name: "Букет из разноцветных роз", size: "малый", count: 2, price: 1000}, {name: "Букет из разноцветных роз", size: "малый", count: 1, price: 2000}], orderSum: 44000, status: "delivered"},

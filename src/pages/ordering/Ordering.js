@@ -76,7 +76,7 @@ const Ordering = observer(() => {
                                             </div>
                                             
                                             <MyHr/>
-                                            <RadioInput radioId={"radioPeriod"} setActive={e => setPeriod({...period, time: e})} list={[
+                                            <RadioInput radioId={"radioPeriod"} setActive={e => setPeriod({...period, time: e.target.value})} list={[
                                                 {name: "Позвонить получателю для уточнения времени и адреса", value: "unestablished"}
                                             ]} />
                                             {period.time === "unestablished" ? 

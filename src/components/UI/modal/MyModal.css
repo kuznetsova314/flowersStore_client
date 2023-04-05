@@ -1,0 +1,22 @@
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #BDBDBD;
+    z-index: 1000;
+}
+.modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.modal__inner {
+    display: block;
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: var(--color-white);
+}
