@@ -9,9 +9,9 @@ export default class UserStore {
         this._user = {fullName: "Валерий Меладзе", phone: "+7 123 456 78 90", city: "Москва", address: "Москва"}
         this._promotion = 5
         this._orders = [
-            {date: 1676847888, number: "1N30325", products: [{name: "Букет из разноцветных роз", size: "малый", count: 2, price: 1000}, {name: "Букет из разноцветных роз", size: "малый", count: 1, price: 2000}], orderSum: 44000, status: "delivered"},
-            {date: 1676847878, number: "1N30325", products: [{name: "Букет из разноцветных роз", size: "малый", count: 2, price: 1000}], orderSum: 2000, status: "handling"},
-            {date: 1676847856, number: "1N30325", products: [{name: "Букет из разноцветных роз", size: "малый", count: 2, price: 1000}, {name: "Букет из разноцветных роз", size: "малый", count: 1, price: 2000}], orderSum: 4000, status: "paid"},
+            {date: 1676847888, number: "1N30325", products: [{id: 1, name: "Букет из разноцветных роз", size: "малый", count: 2, price: 1000}, {id: 2, name: "Букет из разноцветных роз", size: "малый", count: 1, price: 2000}], orderSum: 44000, status: "delivered"},
+            {date: 1676847878, number: "1N30325", products: [{id: 1, name: "Букет из разноцветных роз", size: "малый", count: 2, price: 1000}], orderSum: 2000, status: "handling"},
+            {date: 1676847856, number: "1N30325", products: [{id: 1, name: "Букет из разноцветных роз", size: "малый", count: 2, price: 1000}, {id: 2, name: "Букет из разноцветных роз", size: "малый", count: 1, price: 2000}], orderSum: 4000, status: "paid"},
         ]
         makeAutoObservable(this)
     }

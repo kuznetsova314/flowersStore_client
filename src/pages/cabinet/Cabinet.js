@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import BreadCrumbs from "../../components/UI/breadCrumbs/BreadCrumbs";
-import './Cabinet.css';
 import Sidebar from '../../components/sidebar/Sidebar';
 import CabinetProfile from '../../components/CabinetSections/profile/CabinetProfile';
 import CabinetOrders from '../../components/CabinetSections/orders/CabinetOrders';
@@ -13,6 +12,7 @@ const Cabinet = () => {
             <section className="cabinet">
                 <Sidebar  
                     onClick={(e) => setVariant(e)}
+                    header={"Личный кабинет"}
                     variant={variant}
                     list={[
                     {name: "Профиль", value: "profile"},

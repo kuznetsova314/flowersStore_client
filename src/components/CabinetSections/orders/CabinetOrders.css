@@ -1,0 +1,59 @@
+.cabinetOrders {
+    padding-left: 40rem;
+    padding-top: 4rem;
+}
+.co__inner {
+    display: block;
+    background-color: var(--color-white);
+    border-radius: 10px;
+    padding: 2.3rem 3rem;
+    width: 100%;
+}
+.co__items {
+    display: flex;
+    justify-content: space-between;
+}
+.co__left {
+    margin: 0 auto;
+}
+.co__right {
+    text-align: right;
+    margin: 0 auto;
+}
+.co__title {
+    color: var(--color-gray);
+    font-size: 1.4rem;
+    margin: 1.3rem 0 .3rem;
+}
+
+.co__name{
+    display: flex;
+    flex-wrap: wrap;
+    width: 19rem;
+}
+.co__product:last-child .co__hrHorizontal  {
+    display: none;
+}
+.co__productInner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.co__hrVertival {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 20px;
+    background-color: var(--color-gray);
+    margin: .5rem;
+}
+.co__status.delivered {
+    color: var(--color-green);
+}
+.co__status.handling {
+    color: var(--color-secondary);
+}
+.co__status.paid {
+    color: #F2994A;
+}
+

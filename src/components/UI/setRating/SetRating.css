@@ -1,0 +1,13 @@
+.setRating {
+    margin-left: 1rem;
+}
+.setRating__star {
+    cursor: pointer;
+     
+ }
+ 
+ .setRating__input {
+    display: none;
+ }
+
+ 

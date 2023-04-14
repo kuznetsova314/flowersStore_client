@@ -1,0 +1,39 @@
+.textReviews {
+    background-color: var(--color-white);
+    border-radius: 10px;
+    padding: 2.7rem 3.5rem 5.5rem;
+    margin: 1rem 0;
+}
+.tr__flex {
+    display: flex;
+    justify-content: space-between;
+
+}
+.tr__block {
+    width: 32%;
+}
+.tr__name {
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+.tr__input {
+    background-color: #FAFAFA;
+    border: 1px solid #E0E0E0;
+    margin-bottom: 2rem;
+    width: 100%;
+    min-height: 4rem;
+    padding: 1rem 1.4rem;
+}
+.tr__input::placeholder {
+    color: #BDBDBD;
+    font-family: "Literal";
+}
+.tr__comment {
+    width: 100%;
+    min-height: 8rem;
+    margin-bottom: 2rem;
+}
+.tr__comment input {
+    min-height: 8rem;
+}

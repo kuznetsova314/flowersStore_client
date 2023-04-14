@@ -41,33 +41,3 @@
     flex-wrap: wrap;
     flex-direction: column;
 }
-.sr__item {
-    margin: 2rem auto;
-    position: relative;
-    z-index: 1;
-}
-.sr__rating {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 2;
-}
-.sr__name{
-    font-size: 1.6rem;
-    color: var(--color-green);
-    font-weight: 700;
-}
-.sr__block {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    color: var(--color-gray);
-}
-.sr__date {
-    font-size: 1.2rem; 
-    margin-right: .5rem;
-}
-.sr__city {
-    font-size: 1.4rem;
-    font-family: "Roboto";
-}

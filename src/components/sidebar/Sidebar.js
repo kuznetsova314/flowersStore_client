@@ -2,11 +2,11 @@ import React from 'react';
 import "./Sidebar.css";
 import { FaRegEdit } from "react-icons/fa";
 
-const Sidebar = ({list, onClick, variant}) => {
+const Sidebar = ({list, onClick, variant, header}) => {
     
     return (
         <div className="sidebar">
-           <h2 className="sidebar__header">Личный кабинет</h2>
+           <h2 className="sidebar__header">{header}</h2>
            <div className="sidebar__inner">   
                 {list.map(l =>
                     <div className={l.value === variant ? "sidebar__item active" : "sidebar__item"} key={l.value}>

@@ -7,19 +7,32 @@ import MyButton from '../../UI/MyButton/MyButton';
 
 const CabinetChangePassword = ({setVariant}) => {
     const [password, setPassword] = useState('');
-    const [newPassword, setNewPassword] = useState('1');
-    const [newPasswordSecond, setNewPasswordSecond] = useState('2');
-    const [equalPassword, setEqualPassword] = useState(false)
-    useEffect(() => {
-        const element = document.getElementById("error");
-        if(newPassword === newPasswordSecond) {
-            setEqualPassword(true);
-            element.setAttribute("className", "ccp__error")
-         } else {
-            setEqualPassword(false);
-            element.setAttribute("className", "ccp__error active")
-         }  
-    }, [newPassword, newPasswordSecond])
+    const [newPassword, setNewPassword] = useState('');
+    const [newPasswordSecond, setNewPasswordSecond] = useState('');
+    const [passwordError, setPasswordError] = useState('')
+    const [passwordDirty, setPasswordDirty] = useState(false)
+    
+    const passwordHandler = (e) => {
+        setNewPassword(e.target.value)
+        console.log(newPassword)
+        checkPasswords()
+    }
+    const passwordHandlerSecond = (e) => {
+        setNewPasswordSecond(e.target.value)
+        console.log(newPasswordSecond)
+        checkPasswords()
+    }
+    function checkPasswords() {
+        if(newPassword !== newPasswordSecond) {
+            setPasswordError("Пароли не совпадают")
+            if (newPassword < 4) {
+            setPasswordError("Слишком короткий пароль")
+        }
+        } else {
+            setPasswordError("")
+            setPasswordDirty(false)
+        }
+    }
     const removePasswords = () => {
         setPassword('');
         setNewPassword('');
@@ -37,12 +50,12 @@ const CabinetChangePassword = ({setVariant}) => {
                 <div className="ccp__header">Смена пароля</div>
                 <div className="ccp__inner">
                     <div className="ccp__name">Текущий пароль</div>
-                    <input type="password" required className="ccp__input" onChange={(e) => setPassword(e.target.value)}/>
+                    <input value={password} type="password" required className="ccp__input" onChange={(e) => setPassword(e.target.value)}/>
                     <div className="ccp__name">Новый пароль</div>
-                    <input type="password" required className="ccp__input" onChange={(e) => setNewPassword(e.target.value)}/>
+                    <input value={newPassword} type="password" onBlur={() => setPasswordDirty(true)} required className="ccp__input" onChange={(e) => passwordHandler(e)}/>
                     <div className="ccp__name">Повторите <MySpan>новый</MySpan> пароль</div>
-                    <input type="password" required className="ccp__input" onChange={(e) => setNewPasswordSecond(e.target.value)}/>
-                    <div id="error">Пароли не совпадают</div>
+                    <input value={newPasswordSecond} type="password" onBlur={() => setPasswordDirty(true)} required className="ccp__input" onChange={(e) => passwordHandlerSecond(e)}/>
+                    {(passwordDirty && passwordError) && <div className="ccp__error">{passwordError}</div>} 
                     <div className="ccp__flex">
                         <MyButton size={"gray"} onClick={() => removePasswords()}>Отмена</MyButton>
                         <MyButton size={"small"}>Сохранить</MyButton>
