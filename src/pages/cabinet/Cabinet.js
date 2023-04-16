@@ -7,10 +7,12 @@ import CabinetChangePassword from '../../components/CabinetSections/changePasswo
 
 const Cabinet = () => {
     const [variant, setVariant] = useState("profile")
+    const [visible, setVisible] = useState(false);
     return (
         <main>
             <section className="cabinet">
-                <Sidebar  
+                <Sidebar
+                    setVisible={setVisible}  
                     onClick={(e) => setVariant(e)}
                     header={"Личный кабинет"}
                     variant={variant}
@@ -21,7 +23,7 @@ const Cabinet = () => {
                  ]}/>
                 <div className='container'>
                     {variant === "profile" ? 
-                        <CabinetProfile/>
+                        <CabinetProfile visible={visible} setVisible={setVisible}/>
                         : variant === "orders" ?
                         <CabinetOrders/>
                         :<CabinetChangePassword setVariant={setVariant}/>

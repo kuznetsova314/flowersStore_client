@@ -51,8 +51,8 @@ body {
     font-family: "Literal";
     margin: 0;
     padding: 0;
-    
 }
+
 *,
 *::before,
 *::after {
@@ -76,13 +76,11 @@ input {
     font-family: "Literal";
 }
 
-.img {
+img {
     max-width: 100%;
     display: block;
-    height: auto;
     overflow: hidden;
     object-fit: cover;
-    margin: auto;
 }
 
 .page {

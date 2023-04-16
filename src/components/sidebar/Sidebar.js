@@ -2,7 +2,7 @@ import React from 'react';
 import "./Sidebar.css";
 import { FaRegEdit } from "react-icons/fa";
 
-const Sidebar = ({list, onClick, variant, header}) => {
+const Sidebar = ({list, onClick, variant, header, setVisible}) => {
     
     return (
         <div className="sidebar">
@@ -17,10 +17,8 @@ const Sidebar = ({list, onClick, variant, header}) => {
                         >
                                 {l.name}
                         </div>
-                        {l.value === "profile" ? 
-                            <FaRegEdit className="sidebar__icon"/>
-                            :
-                            <div className="sidebar__icon"></div>
+                        {(l.value === "profile") && 
+                            <FaRegEdit className="sidebar__icon" onClick={() => setVisible(true)}/>
                         }
                             
                     </div>

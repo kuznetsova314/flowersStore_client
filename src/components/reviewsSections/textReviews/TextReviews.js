@@ -5,8 +5,9 @@ import { Context } from '../../../index';
 import ReviewsItem from '../../UI/reviewsItem/ReviewsItem';
 import MyButton from '../../UI/MyButton/MyButton';
 import SetRating from '../../UI/setRating/SetRating';
+import { observer } from 'mobx-react-lite';
 
-const TextReviews = () => {
+const TextReviews = observer(() => {
     const {review} = useContext(Context);
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
@@ -78,6 +79,6 @@ const TextReviews = () => {
         </div>
         
     );
-};
+});
 
 export default TextReviews;

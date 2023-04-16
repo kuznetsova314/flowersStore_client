@@ -9,9 +9,9 @@ import { FaRegEdit } from "react-icons/fa";
 import MyModal from '../../UI/modal/MyModal';
 import ClientEdit from '../clientEdit/ClientEdit';
 
-const CabinetProfile = observer(() => {
+const CabinetProfile = observer(({visible, setVisible}) => {
     const {user} = useContext(Context);
-    const [visible, setVisible] = useState(false);
+    
     const totalProgress = user.ordersSum * 100 / 90000;
     return (
         <div className="cabinetProfil__inner">

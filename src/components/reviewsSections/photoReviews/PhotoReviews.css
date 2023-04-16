@@ -1,0 +1,71 @@
+.photoReviews {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 70vh;
+}
+
+.pr__modal {
+    max-width: 60rem;
+    padding: 4rem 3rem;
+}
+.pr__bigImg {
+    width: 50rem;
+    height: 35rem;
+    border-radius: 10px;
+    margin: 2.5rem 0;
+}
+.pr__item {
+    width: 50%;
+    margin-bottom: 2rem;
+}
+.pr__block {
+    width: 40rem;
+    height: 29rem;
+    position: relative;
+}
+
+.pr__img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+.pr__img img {
+    width: 40rem;
+    height: 29rem;
+    border-radius: 10px;
+}
+.pr__box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    background-color: var(--color-white);
+    border-radius: 10px;
+    padding: 3.7rem 3rem;
+    opacity: 0;
+    transition: opacity .1s linear;
+    width: 40rem;
+    height: 29rem;
+}
+.pr__box:hover {
+    opacity: 1;
+}
+
+.pr__greenText {
+    color: var(--color-green);
+    font-weight: 700;
+    margin-right: .5rem;
+}
+.pr__text {
+    font-size: 1.4rem;
+    margin: 1.3rem 0;
+    line-height: 1.5;
+}
+.pr__right {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+}
