@@ -4,11 +4,19 @@ import {Context} from "../../../index";
 import { observer } from 'mobx-react-lite';
 import { BsArrowRight } from "react-icons/bs";
 import MyModal from '../../UI/modal/MyModal';
+import MyButton from '../../UI/MyButton/MyButton';
+import { CgArrowDownO } from "react-icons/cg";
+import Drag from '../../UI/drag/Drag';
 
 const PhotoReviews = observer(() => {
     const {review} = useContext(Context);
     const [visible, setVisible] = useState(false);
     const [reviewId, setReviewId] = useState('');
+    const [file, setFile] = useState([]);
+    const [fullName, setFullName] = useState('');
+    const [email, setEmail] = useState('');
+    const [comment, setComment] = useState('');
+    const [drag, setDrag] = useState(false);
     const handlerReview = (e) => {
         setReviewId(e.target.getAttribute("value"));
         setVisible(true);
@@ -59,6 +67,51 @@ const PhotoReviews = observer(() => {
                     
                 </div>
             )}
+            <div className="pr__whiteArea">
+                <div className="pr__flex">
+                    <div className="pr__drag">
+                        <Drag file={file} setFile={setFile} drag={drag} setDrag={setDrag}/>
+                    </div>
+                    
+                    <div className="pr__inputs">
+                        <div className="pr__flex">
+                            <div className="pr__column">
+                                <div className="pr__name">Имя и фамилия</div>
+                                <input 
+                                    type="text"
+                                    placeholder="Валерий Меладзе"
+                                    required
+                                    value={fullName}
+                                    onChange={e => setFullName(e.target.value)} 
+                                    className="pr__input"/>
+                            </div>
+                            <div className="pr__column">
+                                <div className="pr__name">Эл. почта</div>
+                                <input 
+                                    type="text"
+                                    required
+                                    placeholder="example@mail.ru"
+                                    value={email}
+                                    onChange={e => setEmail(e.target.value)} 
+                                    className="pr__input"/>
+                            </div>
+                        </div>
+                        <input 
+                            type="text" 
+                            required
+                            placeholder="Ваш комментарий"
+                            className="pr__textInput" 
+                            value={comment}
+                            onChange={e => setComment(e.target.value)} />
+                    </div>
+                    
+                </div>
+                <div className="pr__right">
+                    <MyButton size={"small"}>Отправить</MyButton>
+                </div>    
+            </div>
+                
+            
         </div>
     );
 });

@@ -1,4 +1,4 @@
-import { ADMIN_ROUTE, BASKET_ROUTE, CABINET_ROUTE, CONTACTS_ROUTE, ERROR_ROUTE, LOGIN_ROUTE, ORDERING_ROUTE, PRODUCT_ROUTE, PROMOTIONS_ROUTE, QUESTIONS_ROUTE, REGISTRATION_ROUTE, REVIEWS_ROUTE, SHOP_ROUTE, WORKER_ROUTE } from "./utils/consts";
+import { ADMIN_ROUTE, BASKET_ROUTE, CABINET_ROUTE, CONTACTS_ROUTE, ERROR_ROUTE, ORDERING_ROUTE, PRODUCT_ROUTE, PROMOTIONS_ROUTE, QUESTIONS_ROUTE, AUTH_ROUTE, REVIEWS_ROUTE, SHOP_ROUTE, WORKER_ROUTE } from "./utils/consts";
 import Admin from "./pages/admin/Admin";
 import Worker from "./pages/worker/Worker";
 import Ordering from "./pages/ordering/Ordering";
@@ -38,11 +38,7 @@ export const authRoutes = [
 ];
 export const publicRoutes = [
     {
-        path: REGISTRATION_ROUTE,
-        Component: Auth
-    },
-    {
-        path: LOGIN_ROUTE,
+        path: AUTH_ROUTE,
         Component: Auth
     },
     {

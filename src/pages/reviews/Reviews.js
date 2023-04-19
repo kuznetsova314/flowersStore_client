@@ -10,7 +10,7 @@ const Reviews = () => {
     const [variant, setVariant] = useState("text")
     return (
         <main>
-            <section>
+            <section style={{display: "flex"}}>
                 <Sidebar 
                     header={"Отзывы"} 
                     onClick={(e) => setVariant(e)}
@@ -20,7 +20,7 @@ const Reviews = () => {
                     {name: "Фотоотзывы", value: "photo"},
                  ]}/>
                 <div className='container'>
-                    <div style={{paddingLeft: 30 + "rem", paddingTop: 4 + "rem"}}>
+                    <div style={{paddingLeft: 23 + "rem", paddingTop: 4 + "rem"}}>
                         <BreadCrumbs list={[
                             {name: "Главная", to: SHOP_ROUTE},
                             {name: "Отзывы", to: null},

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import { ADMIN_ROUTE, CONTACTS_ROUTE, PROMOTIONS_ROUTE, QUESTIONS_ROUTE, REVIEWS_ROUTE, SHOP_ROUTE } from '../../../utils/consts';
+import { ADMIN_ROUTE, CONTACTS_ROUTE, PROMOTIONS_ROUTE, QUESTIONS_ROUTE, REVIEWS_ROUTE, SHOP_ROUTE, CABINET_ROUTE, AUTH_ROUTE } from '../../../utils/consts';
 import classes from "./Navbar.module.css";
 import logo from "../../../images/logo.svg";
 import { observer } from 'mobx-react-lite';
@@ -38,13 +38,13 @@ const Navbar = observer(() => {
                         />  
                         </div>
                         { (user.isAdmin) ? 
-                            <Link to={CONTACTS_ROUTE} className={classes.nav__link}>Админ панель</Link>
+                            <Link to={CABINET_ROUTE} className={classes.nav__link}>Админ панель</Link>
                         : (user.isWorker) ?
-                            <Link to={CONTACTS_ROUTE} className={classes.nav__link}>Заказы</Link>
+                            <Link to={CABINET_ROUTE} className={classes.nav__link}>Заказы</Link>
                         : (user.isUser) ?
-                            <Link to={CONTACTS_ROUTE} className={classes.nav__link}>Мои заказы</Link>
+                            <Link to={CABINET_ROUTE} className={classes.nav__link}>Мои заказы</Link>
                         :
-                            <Link to={CONTACTS_ROUTE} className={classes.nav__link}>Войти</Link>
+                            <Link to={AUTH_ROUTE} className={classes.nav__link}>Войти</Link>
                         }
                         <Currency/>
                     </div>

@@ -1,8 +1,9 @@
 .sidebar {
     width: 26.3rem;
     background-color: #F2F2F2;
-    position: fixed;
-    top: 13rem;
+    position: relative;
+    top: 0;
+    height: auto;
     bottom: 0;
     left: 20%;
     padding: 1.5rem;
@@ -27,6 +28,7 @@
 }
 .sidebar__item.active {
     background-color: #F6FFF3;
+
 }
 .sidebar__item:hover {
     opacity: .8;

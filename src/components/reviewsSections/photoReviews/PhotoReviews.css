@@ -69,3 +69,36 @@
     justify-content: flex-end;
     cursor: pointer;
 }
+.pr__whiteArea {
+    background-color: var(--color-white);
+    border-radius: 10px;
+    width: 100%;
+    padding: 2.1rem 2.8rem 3.1rem;
+    
+}
+
+.pr__drug {
+    max-width: 30%;
+}
+.pr__inputs {
+    width: 68%;
+}
+.pr__flex {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.pr__column {
+    width: 49%;
+}
+.pr__name {
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+
+.pr__textInput {
+    min-height: 10rem;
+    margin: 2rem 0;
+}
