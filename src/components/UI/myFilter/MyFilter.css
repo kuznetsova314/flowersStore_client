@@ -20,6 +20,10 @@
     -webkit-appearance: none;
     appearance: none;
     position: absolute;
+    border: none;
+    background: none;
+    height: auto;
+    padding: auto;
 }
 .filter__label {
     color: #4F4F4F;

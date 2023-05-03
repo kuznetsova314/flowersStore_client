@@ -96,7 +96,7 @@ export default class ReviewStore {
         ]
         this._reviewsPhoto = [
             {
-              id: 1,
+               id: 1,
                name: "id labore ex et quam laborum",
                email: "Eliseo@gardner.biz",
                img: "https://via.placeholder.com/600/92c952", 

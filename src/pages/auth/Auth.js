@@ -1,18 +1,46 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import img from "../../images/auth.jpg";
 import "./Auth.css";
 import MyHr from '../../components/UI/hr/MyHr';
 import MyButton from '../../components/UI/MyButton/MyButton';
+import { login, registration } from '../../http/userAPI';
+import { Context } from '../../index';
+import { useNavigate } from 'react-router-dom';
+import { SHOP_ROUTE } from '../../utils/consts';
 
 const Auth = () => {
+    const {user} = useContext(Context);
+    const navigate = useNavigate();
     const [variant, setVariant] = useState("sighIn");
-    const [authPhone, setAuthPhone] = useState('');
-    const [authFullname, setAuthFullname] = useState('');
-    const [authCity, setAuthCity] = useState('');
-    const [authAddress, setAuthAddress] = useState('');
-    const [authPassword, setAuthPassword] = useState('');
-    const [authSecondPassword, setAuthSecondPassword] = useState('');
+    const [phone, setPhone] = useState('');
+    const [fullname, setFullname] = useState('');
+    const [city, setCity] = useState('');
+    const [address, setAddress] = useState('');
+    const [password, setPassword] = useState('');
+    const [secondPassword, setSecondPassword] = useState('');
     const [equal, setEqual] = useState(false);
+
+    const click = async () => {
+        try {
+            let data;
+            if (variant === "sighIn") {
+                data = await login(phone, password);
+            } else {
+                data = await registration(phone, password, fullname, city, address)
+            }
+            user.setUser(data)
+            user.setIsAuth(true)
+            data.role === "admin" ? 
+                user.setIsAdmin(true) 
+                : data.role === "worker" ? 
+                user.setIsWorker(true) 
+                : user.setIsUser(true);
+            navigate(SHOP_ROUTE);
+            
+        } catch (e) {
+            alert(e.response.data.message)
+        }
+    }
     return (
         <main>
             <section className='auth__section'>
@@ -43,8 +71,8 @@ const Auth = () => {
                                         className="auth__input"
                                         type="tel"
                                         placeholder="+7 123 456 78 90"
-                                        value={authPhone}
-                                        onChange={(e) => setAuthPhone(e.target.value)}
+                                        value={phone}
+                                        onChange={(e) => setPhone(e.target.value)}
                                         required/>
                                 </div> 
                                 <div>
@@ -52,8 +80,8 @@ const Auth = () => {
                                     <input 
                                         className="auth__input"
                                         type="password"
-                                        value={authPassword}
-                                        onChange={(e) => setAuthPassword(e.target.value)}
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
                                         required/>
                                 </div> 
                             </div>
@@ -65,8 +93,8 @@ const Auth = () => {
                                         className="auth__input"
                                         type="tel"
                                         placeholder="+7 123 456 78 90"
-                                        value={authPhone}
-                                        onChange={(e) => setAuthPhone(e.target.value)}
+                                        value={phone}
+                                        onChange={(e) => setPhone(e.target.value)}
                                         required/>
                                 </div>
                                 <div>
@@ -75,8 +103,8 @@ const Auth = () => {
                                         className="auth__input"
                                         type="text"
                                         placeholder="Валерий Меладзе"
-                                        value={authFullname}
-                                        onChange={(e) => setAuthFullname(e.target.value)}
+                                        value={fullname}
+                                        onChange={(e) => setFullname(e.target.value)}
                                         required/>
                                 </div>
                                 <div>
@@ -85,8 +113,8 @@ const Auth = () => {
                                         className="auth__input"
                                         type="text"
                                         placeholder="Владивосток"
-                                        value={authCity}
-                                        onChange={(e) => setAuthCity(e.target.value)}
+                                        value={city}
+                                        onChange={(e) => setCity(e.target.value)}
                                         required/>
                                 </div>
                                 <div>
@@ -95,8 +123,8 @@ const Auth = () => {
                                         className="auth__input"
                                         type="text"
                                         placeholder="Владивосток"
-                                        value={authAddress}
-                                        onChange={(e) => setAuthAddress(e.target.value)}
+                                        value={address}
+                                        onChange={(e) => setAddress(e.target.value)}
                                         required/>
                                 </div>
                                 <div>
@@ -104,8 +132,8 @@ const Auth = () => {
                                     <input 
                                         className="auth__input"
                                         type="password"
-                                        value={authPassword}
-                                        onChange={(e) => setAuthPassword(e.target.value)}
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
                                         required/>
                                 </div>
                                 <div>
@@ -113,14 +141,14 @@ const Auth = () => {
                                     <input 
                                         className="auth__input"
                                         type="password"
-                                        value={authSecondPassword}
-                                        onChange={(e) => setAuthSecondPassword(e.target.value)}
+                                        value={secondPassword}
+                                        onChange={(e) => setSecondPassword(e.target.value)}
                                         required/>
                                 </div>
                             </div>
                             }
                             <div className='auth__btn'>
-                                <MyButton size={"small"}>{variant === "sighnIn" ? "Войти" : "Зарегистрироваться"}</MyButton>
+                                <MyButton size={"small"} onClick={click}>{variant === "sighIn" ? "Войти" : "Зарегистрироваться"}</MyButton>
                             </div>
                         </div>
                     </div>
