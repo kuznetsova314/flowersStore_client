@@ -10,7 +10,7 @@ const Cabinet = () => {
     const [visible, setVisible] = useState(false);
     return (
         <main>
-            <section className="cabinet">
+            <section className="cabinet" style={{display: "flex"}}>
                 <Sidebar
                     setVisible={setVisible}  
                     onClick={(e) => setVariant(e)}

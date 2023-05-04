@@ -17,31 +17,31 @@ const App = observer(() => {
     
     check().then(data => {
       user.setIsAuth(true);
-      user.setUser(data)
       
+      user.setUser(data)
+      console.log(data)
       data.role === "admin" ? 
         user.setIsAdmin(true) 
         : data.role === "worker" ? 
         user.setIsWorker(true) 
         : user.setIsUser(true);
-      console.log(data)
+      
 
-    }).finally(() => setLoading(false))
+    })/*.finally(() => setLoading(false))*/
   }, [])
-
-  
+  console.log(user.isAuth)
   return (
     <BrowserRouter>
       
-      {loading ? 
+      {/* {loading ? 
         <div className="page"><Spinner/></div>
-        :
+        : */}
         <div className="page">
           <Navbar/>
           <AppRouter/>
           <Footer />
         </div>
-      }
+      {/* } */}
         
       
     </BrowserRouter>

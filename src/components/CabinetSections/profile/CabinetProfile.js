@@ -24,7 +24,7 @@ const CabinetProfile = observer(({visible, setVisible}) => {
                 {name: "Профиль", to: null},
             ]}/>
             <div className='cp__promotion'>
-                <div className='cp__greenArea'>Ваша скидка - {user.promotion}%</div>
+                <div className='cp__greenArea'>Ваша скидка - {user.user.promotion}%</div>
                 <div className='cp__chart'>
                     <div className="cp__progress">
                         <div className="cp_blank"></div>
@@ -32,21 +32,21 @@ const CabinetProfile = observer(({visible, setVisible}) => {
                     </div>
                     <div className="cp__description">
                         <div className="cp__title">Сумма заказов:</div>
-                        <div className={user.promotion >= 3 ? "cp__box active" : "cp__box"} style={{left: 6 + "%"}}>
+                        <div className={user.user.promotion >= 3 ? "cp__box active" : "cp__box"} style={{left: 6 + "%"}}>
                             <div className="cp__col">
                                 <div className="cp__start">От 10 000 руб.</div>
                                 <div className="cp__number">3%</div>
                             </div>
                             <div className="cp__pointer"></div>
                         </div>
-                        <div className={user.promotion >= 5 ? "cp__box active" : "cp__box"} style={{left: 36 + "%"}}>
+                        <div className={user.user.promotion >= 5 ? "cp__box active" : "cp__box"} style={{left: 36 + "%"}}>
                             <div className="cp__col">
                                 <div className="cp__start">От 50 000 руб.</div>
                                 <div className="cp__number">5%</div>
                             </div>
                             <div className="cp__pointer"></div>
                         </div>
-                        <div className={user.promotion === 7 ? "cp__box active" : "cp__box"} style={{left: 40.5 + "%"}}>
+                        <div className={user.user.promotion === 7 ? "cp__box active" : "cp__box"} style={{left: 40.5 + "%"}}>
                             <div className="cp__col">
                                 <div className="cp__start">От 90 000 руб.</div>
                                 <div className="cp__number">7%</div>

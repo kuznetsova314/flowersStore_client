@@ -4,10 +4,9 @@ export default class UserStore {
     constructor() {
         this._isAdmin = false
         this._isWorker = false
-        this._isAuth = false
+        this._isAuth = true
         this._isUser = false
         this._user = []
-        this._promotion = 0
         this._orders = [
             {date: 1676847888, number: "1N30325", products: [{id: 1, name: "Букет из разноцветных роз", size: "малый", count: 2, price: 1000}, {id: 2, name: "Букет из разноцветных роз", size: "малый", count: 1, price: 2000}], orderSum: 44000, status: "delivered"},
             {date: 1676847878, number: "1N30325", products: [{id: 1, name: "Букет из разноцветных роз", size: "малый", count: 2, price: 1000}], orderSum: 2000, status: "handling"},
