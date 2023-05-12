@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import MyBlock from '../block/MyBlock';
 import "./MyRadio.css";
 
-const MyRadio = ({list, setActive}) => {
+const MyRadio = ({list, setActivePrice}) => {
     
     useEffect (() => {
         const radio = document.getElementById("radio");
@@ -19,7 +19,7 @@ const MyRadio = ({list, setActive}) => {
                 >
                     <input 
                         className="myRadio__input"
-                        onChange={e => setActive(e.target.value)}
+                        onChange={e => setActivePrice(e.target.value)}
                         type="radio"
                         name="price" 
                         value={l.value} 

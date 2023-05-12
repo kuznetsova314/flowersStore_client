@@ -5,7 +5,7 @@ import "./Products.css";
 import FilterBar from '../filterBar/FilterBar';
 import ShowMore from '../../UI/showMore/ShowMore';
 
-const Products = ({sorting, setSorting, products, filter, setFilter}) => {
+const Products = ({sorting, setSorting, products, filter, setFilter, fetchMore}) => {
     return (
         <section className="section__products">
                 <div className="container">
@@ -13,7 +13,7 @@ const Products = ({sorting, setSorting, products, filter, setFilter}) => {
                         <div className="product__group">
                             <SortBar sorting={sorting} setSorting={setSorting}/>
                             <Cards products={products}/>
-                            <ShowMore>Показать еще</ShowMore>
+                            <ShowMore onClick={() => fetchMore()}>Показать еще</ShowMore>
                         </div>
                         <div className="filter__group">
                             <FilterBar filter={filter} setFilter={setFilter} sorting={sorting} setSorting={setSorting}/>

@@ -57,16 +57,7 @@ export default class ProductStore {
             {id: 4, name: "Популярности"},
         ]
         this._selectedCurrency = {}
-        this._products = [
-            {id: 201, name: "Шок. конфеты 'Лучшей маме'", price: 23000, img: [{id: 1, src: `https://via.placeholder.com/150/92c952`}, {id: 2, src: `https://via.placeholder.com/150/771796`},{id: 3, src: `https://via.placeholder.com/150/771796`},{id: 4, src: `https://via.placeholder.com/150/771796`}], date: 1676847878, rating: 1},
-            {id: 202, name: "Шок. конфеты 'Лучшей маме'", price: 6000, tag: 'Новинка', img: [{id: 1, src: `https://via.placeholder.com/150/92c952`}, {id: 2, src: `https://via.placeholder.com/150/771796`},{id: 3, src: `https://via.placeholder.com/150/771796`},{id: 4, src: `https://via.placeholder.com/150/771796`}], date: 1676847870, rating: 2},
-            {id: 203, name: "Шок. конфеты 'Лучшей маме'", price: 2300, tag: 'Новинка', img: [{id: 1, src: `https://via.placeholder.com/150/92c952`}, {id: 2, src: `https://via.placeholder.com/150/771796`},{id: 3, src: `https://via.placeholder.com/150/771796`},{id: 4, src: `https://via.placeholder.com/150/771796`}], date: 1676847860, rating: 3},
-            {id: 204, name: "Шок. конфеты 'Лучшей маме'", price: 230, img: [{id: 1, src: `https://via.placeholder.com/150/92c952`}, {id: 2, src: `https://via.placeholder.com/150/771796`},{id: 3, src: `https://via.placeholder.com/150/771796`},{id: 4, src: `https://via.placeholder.com/150/771796`}], date: 1676847850, rating: 4},
-            {id: 205, name: "Шок. конфеты 'Лучшей маме'", price: 4000, tag: 'Акция', img: [{id: 1, src: `https://via.placeholder.com/150/92c952`}, {id: 2, src: `https://via.placeholder.com/150/771796`},{id: 3, src: `https://via.placeholder.com/150/771796`},{id: 4, src: `https://via.placeholder.com/150/771796`}], date: 1676847834, rating: 5},
-            {id: 206, name: "Шок. конфеты 'Лучшей маме'", price: 2300, tag: 'Новинка', img: [{id: 1, src: `https://via.placeholder.com/150/92c952`}, {id: 2, src: `https://via.placeholder.com/150/771796`},{id: 3, src: `https://via.placeholder.com/150/771796`},{id: 4, src: `https://via.placeholder.com/150/771796`}], date: 1676847860, rating: 3},
-            {id: 207, name: "Шок. конфеты 'Лучшей маме'", price: 230, img: [{id: 1, src: `https://via.placeholder.com/150/92c952`}, {id: 2, src: `https://via.placeholder.com/150/771796`},{id: 3, src: `https://via.placeholder.com/150/771796`},{id: 4, src: `https://via.placeholder.com/150/771796`}], date: 1676847850, rating: 4},
-            {id: 208, name: "Шок. конфеты 'Лучшей маме'", price: 4000, tag: 'Акция', img: [{id: 1, src: `https://via.placeholder.com/150/92c952`}, {id: 2, src: `https://via.placeholder.com/150/771796`},{id: 3, src: `https://via.placeholder.com/150/771796`},{id: 4, src: `https://via.placeholder.com/150/771796`}], date: 1676847834, rating: 5},
-        ]
+        this._products = []
         makeAutoObservable(this)
     }
     setIsFlowers(bool) {

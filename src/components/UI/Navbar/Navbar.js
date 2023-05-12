@@ -37,12 +37,8 @@ const Navbar = observer(() => {
                             ]} 
                         />  
                         </div>
-                        { (user.isAdmin) ? 
-                            <Link to={CABINET_ROUTE} className={classes.nav__link}>Админ панель</Link>
-                        : (user.isWorker) ?
-                            <Link to={CABINET_ROUTE} className={classes.nav__link}>Заказы</Link>
-                        : (user.isUser) ?
-                            <Link to={CABINET_ROUTE} className={classes.nav__link}>Мои заказы</Link>
+                        { (user.isAuth) ? 
+                            <Link to={CABINET_ROUTE} className={classes.nav__link}>Личный кабинет</Link>
                         :
                             <Link to={AUTH_ROUTE} className={classes.nav__link}>Войти</Link>
                         }

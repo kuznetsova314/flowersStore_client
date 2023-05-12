@@ -4,6 +4,7 @@ import Sidebar from '../../components/sidebar/Sidebar';
 import CabinetProfile from '../../components/CabinetSections/profile/CabinetProfile';
 import CabinetOrders from '../../components/CabinetSections/orders/CabinetOrders';
 import CabinetChangePassword from '../../components/CabinetSections/changePassword/CabinetChangePassword';
+import CabinetSignOut from '../../components/CabinetSections/CabinetSignOut';
 
 const Cabinet = () => {
     const [variant, setVariant] = useState("profile")
@@ -20,13 +21,16 @@ const Cabinet = () => {
                     {name: "Профиль", value: "profile"},
                     {name: "Мои заказы", value: "orders"},
                     {name: "Смена пароля", value: "changePassword"},
+                    {name: "Выйти", value: "signOut"},
                  ]}/>
                 <div className='container'>
                     {variant === "profile" ? 
                         <CabinetProfile visible={visible} setVisible={setVisible}/>
                         : variant === "orders" ?
                         <CabinetOrders/>
-                        :<CabinetChangePassword setVariant={setVariant}/>
+                        : variant === "changePassword" ?
+                        <CabinetChangePassword setVariant={setVariant}/>
+                        :<CabinetSignOut/>
                     }
                 </div>
             </section>

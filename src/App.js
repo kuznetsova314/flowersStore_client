@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
 import {BrowserRouter} from "react-router-dom"
 import AppRouter from "./components/AppRouter";
 import Footer from "./components/UI/footer/Footer";
@@ -13,23 +13,23 @@ const App = observer(() => {
   const {user} = useContext(Context);
   const {loading, setLoading} = useState(true);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     
     check().then(data => {
       user.setIsAuth(true);
-      
       user.setUser(data)
-      console.log(data)
+      console.log(JSON.stringify(data))
       data.role === "admin" ? 
         user.setIsAdmin(true) 
         : data.role === "worker" ? 
         user.setIsWorker(true) 
         : user.setIsUser(true);
+        
       
 
     })/*.finally(() => setLoading(false))*/
   }, [])
-  console.log(user.isAuth)
+  // console.log(JSON.stringify(user))
   return (
     <BrowserRouter>
       

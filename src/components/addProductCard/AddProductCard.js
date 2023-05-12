@@ -1,16 +1,31 @@
-import React, { useContext, useState } from 'react';
+import React, {  useContext, useState } from 'react';
 import "./AddProductCard.css";
 import MyButton from '../UI/MyButton/MyButton';
 import MyQuantity from '../UI/quantity/MyQuantity';
+import { observer } from 'mobx-react-lite';
 import { Context } from '../../index';
-import { createObjBasket } from '../../utils/createObjBasket';
+import { createBasketItem } from '../../http/productAPI';
 
-const AddProductCard = ({p}) => {
-    const {basket} = useContext(Context);
+
+const AddProductCard = observer(({p}) => {
+    const {user} = useContext(Context);
     const [count, setCount] = useState(1);
+    // const addBasket = () => {
+    //     const basketItem = createObjBasket(p, p.price, count)
+    //     basket.setProducts([...basket.products, basketItem])
+    // };
     const addBasket = () => {
-        const basketItem = createObjBasket(p, p.price, count)
-        basket.setProducts([...basket.products, basketItem])
+        if(!user.isAuth) {
+            alert("Корзина недоступна для неавторизованных пользователей");
+        } else {
+            const formData = new FormData();
+            formData.append("userId", user.user.id);
+            formData.append("product", JSON.stringify(p));
+            formData.append("price", JSON.stringify(p.price));
+            formData.append("count", count);
+            createBasketItem(formData).then(data => alert(data))
+            
+        }
     };
     return (
         <div className="ap__card" key={p.id}>
@@ -26,6 +41,6 @@ const AddProductCard = ({p}) => {
             </div>
         </div> 
     );
-};
+});
 
 export default AddProductCard;
