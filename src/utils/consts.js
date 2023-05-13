@@ -1,3 +1,5 @@
+import jwtDecode from "jwt-decode";
+
 export const ADMIN_ROUTE = '/admin';
 export const WORKER_ROUTE = '/worker';
 export const AUTH_ROUTE = '/auth';
@@ -11,3 +13,8 @@ export const CABINET_ROUTE = '/cabinet';
 export const PROMOTIONS_ROUTE = '/promotions';
 export const QUESTIONS_ROUTE = '/questions';
 export const REVIEWS_ROUTE = '/reviews';
+export const userId = () => {
+    const token = localStorage.getItem('token')
+    const jwtInfo = jwtDecode(token);
+    return jwtInfo.id
+}

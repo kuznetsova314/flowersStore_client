@@ -10,6 +10,8 @@ import Steps from '../../components/shopSections/steps/Steps';
 import ShopReviews from '../../components/shopSections/shopReviews/ShopReviews';
 import Description from '../../components/shopSections/description/Description';
 import { fetchBouquets } from '../../http/productAPI';
+import { Link } from 'react-router-dom';
+import { REVIEWS_ROUTE } from '../../utils/consts';
 
 const Shop = observer(() => {
     const {product} = useContext(Context);

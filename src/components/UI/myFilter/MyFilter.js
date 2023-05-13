@@ -22,7 +22,7 @@ const MyFilter = ({arr, title, filter, setFilter, className}) => {
                         onChange={e => handler(e.target.value)}
                         className="filter__input" 
                         /> 
-                        <label for={a.value} className="filter__label">{a.name}</label>
+                        <label htmlFor={a.value} className="filter__label">{a.name}</label>
                     </div>
                 )}
             </div>

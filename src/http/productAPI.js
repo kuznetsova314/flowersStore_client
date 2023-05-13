@@ -23,10 +23,15 @@ export const createBasketItem = async (product) => {
     const {data} = await $authHost.post('api/basket', product);
     return data;
 }
-export const fetchBasket = async (userId) => {
-    const {data} = await $authHost.get('api/basket', {params: {userId}});
+export const changeBasketItem = async (product) => {
+    const {data} = await $authHost.put('api/basket', product);
     return data;
 }
+export const fetchBasket = async (userId) => {
+    const {data} = await $authHost.get('api/basket', {params: {userId: userId}});
+    return data;
+}
+
 
 // Products
 
@@ -45,3 +50,36 @@ export const fetchOneProduct = async(id) => {
     return data;
 }
 
+// PhotoReviews
+
+export const createPhotoReview = async (review) => {
+    const {data} = await $authHost.post('api/reviewPhoto', review);
+    return data;
+}
+export const fetchPhotoReviews = async (page, limit) => {
+    const {data} = await $host.get('api/reviewPhoto', {params: {
+        page: page, limit: limit
+    }});
+    return data;
+}
+export const fetchOnePhotoReview = async(id) => {
+    const {data} = await $host.get('api/reviewPhoto/' + id);
+    return data;
+}
+
+// TextReviews
+
+export const createTextReview = async (review) => {
+    const {data} = await $authHost.post('api/reviewText', review);
+    return data;
+}
+export const fetchTextReviews = async (page, limit) => {
+    const {data} = await $host.get('api/reviewText', {params: {
+        page: page, limit: limit
+    }});
+    return data;
+}
+export const fetchOneTextReview = async(id) => {
+    const {data} = await $host.get('api/reviewText/' + id);
+    return data;
+}

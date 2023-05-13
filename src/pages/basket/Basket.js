@@ -3,15 +3,23 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../../index';
 import BreadCrumbs from '../../components/UI/breadCrumbs/BreadCrumbs';
 import "./Basket.css";
-import { SHOP_ROUTE, CABINET_ROUTE, ORDERING_ROUTE } from '../../utils/consts';
+import { SHOP_ROUTE, CABINET_ROUTE, ORDERING_ROUTE, userId } from '../../utils/consts';
 import BasketCard from '../../components/basketCard/BasketCard';
 import { Link, useNavigate } from 'react-router-dom';
 import MySpan from '../../components/UI/MySpan/MySpan';
 import MyButton from '../../components/UI/MyButton/MyButton';
+import { fetchBasket } from '../../http/productAPI';
 
 const Basket = observer(() => {
     const navigate = useNavigate();
-    const {basket} = useContext(Context);
+    const {user} = useContext(Context);
+    const [basket, setBasket] = useState([]);
+    
+    useEffect (() => {
+        console.log(userId())
+        fetchBasket(userId()).then(data => setBasket(data))
+        
+    }, [])
     
     return (
         <main>
@@ -24,8 +32,8 @@ const Basket = observer(() => {
                     ]} />
                     <div className="basket__inner">
                         <h1 className="basket__title">Корзина</h1>
-                        {basket.products.map(p =>
-                            <BasketCard variant={"simple"} key={p.product.id} p={p} />
+                        {basket.map(p =>
+                            <BasketCard variant={"simple"} key={p.id} p={p} />
                         )}
                         <div className="basket__block">
                             <div className="basket__promotion">Зайдиете в <Link 

@@ -1,17 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
-import { ADMIN_ROUTE, CONTACTS_ROUTE, PROMOTIONS_ROUTE, QUESTIONS_ROUTE, REVIEWS_ROUTE, SHOP_ROUTE, CABINET_ROUTE, AUTH_ROUTE } from '../../../utils/consts';
+import React, { useContext } from 'react';
+import { Link } from "react-router-dom";
+import {  CONTACTS_ROUTE, PROMOTIONS_ROUTE, QUESTIONS_ROUTE, REVIEWS_ROUTE, SHOP_ROUTE, CABINET_ROUTE, AUTH_ROUTE, BASKET_ROUTE } from '../../../utils/consts';
 import classes from "./Navbar.module.css";
 import logo from "../../../images/logo.svg";
 import { observer } from 'mobx-react-lite';
 import {Context} from "../../../index";
 import Currency from '../currency/Currency';
 import DropList from '../dropList/DropList';
+import { SlBasket } from "react-icons/sl";
 
 const Navbar = observer(() => {
-    const navigate = useNavigate();
     const {user} = useContext(Context);
-    const {product} = useContext(Context);
     return (
         <nav className={classes.navbar}>
             <div className="container">
@@ -39,10 +38,15 @@ const Navbar = observer(() => {
                         </div>
                         { (user.isAuth) ? 
                             <Link to={CABINET_ROUTE} className={classes.nav__link}>Личный кабинет</Link>
+                            
                         :
                             <Link to={AUTH_ROUTE} className={classes.nav__link}>Войти</Link>
                         }
                         <Currency/>
+                        {user.isAuth &&
+                            <Link to={BASKET_ROUTE}><SlBasket size={"25px"} color={"#5B4A58"} /></Link>
+                        }
+                        
                     </div>
                 </div> 
             </div>   

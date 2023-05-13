@@ -1,15 +1,20 @@
-import { observer } from 'mobx-react-lite';
-import React, { useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Context } from '../../../index';
 import { REVIEWS_ROUTE } from '../../../utils/consts';
 import MySpan from '../../UI/MySpan/MySpan';
 import ShowMore from '../../UI/showMore/ShowMore';
 import "./ShopReviews.css";
 import ReviewsItem from '../../UI/reviewsItem/ReviewsItem';
+import { fetchPhotoReviews, fetchTextReviews } from '../../../http/productAPI';
 
-const ShopReviews = observer(() => {
-    const {review} = useContext(Context);
+const ShopReviews = () => {
+    const [photoReviews, setPhotoReviews] = useState([]);
+    const [textReviews, setTextReviews] = useState([]);
+    useEffect(() => {
+        fetchPhotoReviews(1, 4).then(data => setPhotoReviews(data));
+        fetchTextReviews(1, 3).then(data => setTextReviews(data));
+
+    }, [])
     
     return (
         <section className="shopReviews__section">
@@ -18,10 +23,10 @@ const ShopReviews = observer(() => {
                     <article className="sr__photo">
                         <div className="sr__group">
                             <h2 className="sr__title"><MySpan>Фото</MySpan>хвасты</h2>
-                            <ShowMore><Link to={REVIEWS_ROUTE}></Link>Больше фото</ShowMore>
+                            <Link className="sr__link" to={REVIEWS_ROUTE}>Больше фото</Link>
                         </div>
                         <div className="sr_pictures">
-                            {review.reviewsPhoto.slice(0, 4).map(r =>
+                            {photoReviews.map(r =>
                                 <img src={r.img} key={r.id} className="sr__img" />
                             )}
                         </div>
@@ -29,10 +34,10 @@ const ShopReviews = observer(() => {
                     <article className="sr__text">
                         <div className="sr__group">
                                 <h2 className="sr__title">Отзывы</h2>
-                                <ShowMore><Link to={REVIEWS_ROUTE}></Link>Смотреть все</ShowMore>
+                                <Link className="sr__link" to={REVIEWS_ROUTE}>Смотреть все</Link>
                         </div>
                         <div className="sr__list">
-                            {review.reviewsText.slice(0, 3).map(r =>
+                            {textReviews.map(r =>
                                 <ReviewsItem r={r} key={r.id} />
                             )}
                         </div>
@@ -43,6 +48,6 @@ const ShopReviews = observer(() => {
             
         </section>
     );
-});
+};
 
 export default ShopReviews;

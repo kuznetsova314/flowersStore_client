@@ -8,8 +8,9 @@ import "./BasketCard.css";
 import MyHr from '../UI/hr/MyHr';
 import { RxCross1 } from "react-icons/rx";
 import { AiOutlineDelete } from "react-icons/ai";
+import { changeBasketItem } from '../../http/productAPI';
 
-const BasketCard = observer(({variant, p, setSign}) => {
+const BasketCard = observer(({variant, p}) => {
     const {basket} = useContext(Context);
     const [count, setCount] = useState(p.count);
     const [basketItemSum, setBasketItemSum] = useState(itemSum);
@@ -18,18 +19,21 @@ const BasketCard = observer(({variant, p, setSign}) => {
     }
     
     function addCount () {
-        const value = basket.products.find(item => item.product.id === p.product.id)
-        value.count = count;
-        console.log(JSON.stringify(basket.products))
+        let product = Object.assign(p)
+        product.count = count
+        console.log(JSON.stringify(product))
+        return product;
     }
    
     useEffect(() => {
-        addCount();
+        let product = addCount();
+        changeBasketItem(product).then(data => p = data)
+
         setBasketItemSum(itemSum);
     }, [count])
     const deleteProduct = () => {
-        basket.setProducts(basket.products.filter(item => item.product.id !== p.product.id))
-        console.log(JSON.stringify(basket.products))
+        // basket.setProducts(basket.products.filter(item => item.product.id !== p.product.id))
+        // console.log(JSON.stringify(basket.products))
     }
     return (
         <div className="basket__card">
