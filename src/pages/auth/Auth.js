@@ -1,7 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import img from "../../images/auth.jpg";
 import "./Auth.css";
-import MyHr from '../../components/UI/hr/MyHr';
 import MyButton from '../../components/UI/MyButton/MyButton';
 import { login, registration } from '../../http/userAPI';
 import { Context } from '../../index';
@@ -19,7 +18,27 @@ const Auth = () => {
     const [password, setPassword] = useState('');
     const [secondPassword, setSecondPassword] = useState('');
     const [equal, setEqual] = useState(false);
+    const phoneRef = useRef(null);
+    const nameRef = useRef(null);
+    const cityRef = useRef(null);
+    const adressRef = useRef(null);
+    const passwordRef = useRef(null);
+    const secondPasswordRef = useRef(null);
 
+    useEffect(() => {
+        variant === "sighIn" ? phoneRef.current.focus() : nameRef.current.focus()
+    }, [variant])
+    
+    function handler(e, refItem) {
+        if(e.key === "Enter") {
+            refItem.current.focus()
+        }
+    }
+    function checkKey(e) {
+        if(e.key === "Enter") {
+           click() 
+        }
+    }
     const click = async () => {
         try {
             let data;
@@ -67,7 +86,9 @@ const Auth = () => {
                             <div className="auth__inner">
                                 <div>
                                     <div className="auth__name">Телефон:</div>
-                                    <input 
+                                    <input
+                                        onKeyDown={e => handler(e, passwordRef)}
+                                        ref={phoneRef} 
                                         className="auth__input"
                                         type="tel"
                                         value={phone}
@@ -76,7 +97,9 @@ const Auth = () => {
                                 </div> 
                                 <div>
                                     <div className="auth__name">Пароль:</div>
-                                    <input 
+                                    <input
+                                        onKeyDown={e => checkKey(e)}
+                                        ref={passwordRef} 
                                         className="auth__input"
                                         type="password"
                                         value={password}
@@ -86,19 +109,12 @@ const Auth = () => {
                             </div>
                             :
                             <div className="auth__inner">
-                                <div>
-                                    <div className="auth__name">Телефон:</div>
-                                    <input 
-                                        className="auth__input"
-                                        type="tel"
-                                        placeholder="+7 123 456 78 90"
-                                        value={phone}
-                                        onChange={(e) => setPhone(e.target.value)}
-                                        required/>
-                                </div>
+                                
                                 <div>
                                     <div className="auth__name">Имя и фамилия:</div>
-                                    <input 
+                                    <input
+                                        ref={nameRef} 
+                                        onKeyDown={e => handler(e, cityRef)}
                                         className="auth__input"
                                         type="text"
                                         placeholder="Валерий Меладзе"
@@ -108,7 +124,9 @@ const Auth = () => {
                                 </div>
                                 <div>
                                     <div className="auth__name">Город:</div>
-                                    <input 
+                                    <input
+                                        ref={cityRef} 
+                                        onKeyDown={e => handler(e, adressRef)}
                                         className="auth__input"
                                         type="text"
                                         placeholder="Владивосток"
@@ -118,7 +136,9 @@ const Auth = () => {
                                 </div>
                                 <div>
                                     <div className="auth__name">Адрес:</div>
-                                    <input 
+                                    <input
+                                        ref={adressRef} 
+                                        onKeyDown={e => handler(e, phoneRef)}
                                         className="auth__input"
                                         type="text"
                                         placeholder="Владивосток"
@@ -127,8 +147,22 @@ const Auth = () => {
                                         required/>
                                 </div>
                                 <div>
+                                    <div className="auth__name">Телефон:</div>
+                                    <input
+                                        ref={phoneRef} 
+                                        onKeyDown={e => handler(e, passwordRef)}
+                                        className="auth__input"
+                                        type="tel"
+                                        placeholder="+7 123 456 78 90"
+                                        value={phone}
+                                        onChange={(e) => setPhone(e.target.value)}
+                                        required/>
+                                </div>
+                                <div>
                                     <div className="auth__name">Пароль:</div>
-                                    <input 
+                                    <input
+                                        ref={passwordRef} 
+                                        onKeyDown={e => handler(e, secondPasswordRef)}
                                         className="auth__input"
                                         type="password"
                                         value={password}
@@ -137,7 +171,9 @@ const Auth = () => {
                                 </div>
                                 <div>
                                     <div className="auth__name">Повторите пароль:</div>
-                                    <input 
+                                    <input
+                                        ref={secondPasswordRef} 
+                                        onKeyDown={e => checkKey(e)}
                                         className="auth__input"
                                         type="password"
                                         value={secondPassword}
@@ -147,7 +183,12 @@ const Auth = () => {
                             </div>
                             }
                             <div className='auth__btn'>
-                                <MyButton size={"small"} onClick={click}>{variant === "sighIn" ? "Войти" : "Зарегистрироваться"}</MyButton>
+                                <MyButton 
+                                    size={"small"} 
+                                    onClick={click}
+                                >
+                                    {variant === "sighIn" ? "Войти" : "Зарегистрироваться"}
+                                </MyButton>
                             </div>
                         </div>
                     </div>

@@ -21,7 +21,6 @@ const BasketCard = observer(({variant, p}) => {
     function addCount () {
         let product = Object.assign(p)
         product.count = count
-        console.log(JSON.stringify(product))
         return product;
     }
    
