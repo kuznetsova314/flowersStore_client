@@ -1,8 +1,5 @@
-import { observer } from 'mobx-react-lite';
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { Context } from '../..';
+import React, { useEffect, useState } from 'react';
 import MyBlock from '../UI/block/MyBlock';
-import MyButton from '../UI/MyButton/MyButton';
 import MyQuantity from '../UI/quantity/MyQuantity';
 import "./BasketCard.css";
 import MyHr from '../UI/hr/MyHr';
@@ -10,8 +7,7 @@ import { RxCross1 } from "react-icons/rx";
 import { AiOutlineDelete } from "react-icons/ai";
 import { changeBasketItem } from '../../http/productAPI';
 
-const BasketCard = observer(({variant, p}) => {
-    const {basket} = useContext(Context);
+const BasketCard = ({variant, p, setChangeCount, deleteProduct}) => {
     const [count, setCount] = useState(p.count);
     const [basketItemSum, setBasketItemSum] = useState(itemSum);
     function itemSum () {
@@ -25,21 +21,25 @@ const BasketCard = observer(({variant, p}) => {
     }
    
     useEffect(() => {
-        let product = addCount();
-        changeBasketItem(product).then(data => p = data)
-
-        setBasketItemSum(itemSum);
+        try {
+            let product = addCount();
+            changeBasketItem(product).then(data => {
+                p = data
+            })
+            setBasketItemSum(itemSum);  
+            setChangeCount(prev => !prev)  
+        } catch(e) {
+            console.log(e)
+        }
+        
     }, [count])
-    const deleteProduct = () => {
-        // basket.setProducts(basket.products.filter(item => item.product.id !== p.product.id))
-        // console.log(JSON.stringify(basket.products))
-    }
+    
     return (
         <div className="basket__card">
             {variant === "min" ? 
                 <MyBlock variant={"small"}>
                     <div className="basket__info">
-                        <RxCross1 className="basketMin__icon" onClick={() => deleteProduct()}/>
+                        <RxCross1 className="basketMin__icon" onClick={() => deleteProduct(p.id)}/>
                         <div className='basketMin__img'>
                             <img src={p.product.img[0].src}/>
                         </div>
@@ -67,7 +67,11 @@ const BasketCard = observer(({variant, p}) => {
                             <div className='basket__price'>{p.price.size}({p.price.value} руб.)</div>
                             <MyQuantity count={count} setCount={setCount} />
                             <div className="basketItem__sum">Сумма <b>{basketItemSum}</b></div>
-                            <AiOutlineDelete className="basket__icon" size={"25px"} onClick={() => deleteProduct()}/>
+                            <AiOutlineDelete 
+                                className="basket__icon" 
+                                size={"25px"} 
+                                onClick={() => deleteProduct(p.id)}
+                            />
                             
                         </div>
                         
@@ -77,6 +81,6 @@ const BasketCard = observer(({variant, p}) => {
             
         </div>
     );
-});
+};
 
 export default BasketCard;

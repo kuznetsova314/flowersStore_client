@@ -11,15 +11,17 @@ import { Context } from '../../index';
 import BasketCard from '../../components/basketCard/BasketCard';
 import MySpan from '../../components/UI/MySpan/MySpan';
 import { Link } from 'react-router-dom';
+import { useBasket } from '../../hooks/useBasket';
 
 
 const Ordering = observer(() => {
-    const {basket} = useContext(Context);
+    // const {basket} = useContext(Context);
     const [delivery, setDelivery] = useState('delivery');
     const [period, setPeriod] = useState({time: 'established', date: '' , secrecy: false});
     const [recipient, setRecipient] = useState({who: 'myself', fullName: "", tel: "", city: "", address: "", note: ""});
     const [contacts, setContacts] = useState({fullName: "", tel: "", city: ""});
     const [payment, setPayment] = useState("cashShop");
+    const [basket, basketSum, setChangeCount, deleteProduct] = useBasket()
     
 
     useEffect(()=>{
@@ -93,7 +95,7 @@ const Ordering = observer(() => {
                                                 :
                                                 <div className="order__secrecy">
                                                     <input type="checkbox" id="secrecy" disabled/>
-                                                    <label for="secrecy">По телефону не говорить, что это цветы</label>
+                                                    <label htmlFor="secrecy">По телефону не говорить, что это цветы</label>
                                                 </div>
                                             }
                                         </div>
@@ -231,14 +233,20 @@ const Ordering = observer(() => {
                     </section>
                     <section className="basketMin__section">
                         <h1 className='basketMin__header'>Корзина</h1>
-                        {basket.products.map(p => 
-                         <BasketCard variant={"min"} key={p.product.id} p={p} />   
+                        {basket.map(p => 
+                         <BasketCard 
+                            variant={"min"} 
+                            key={p.id} 
+                            p={p} 
+                            setChangeCount={setChangeCount}
+                            deleteProduct={id => deleteProduct(id)}
+                        />   
                         )}
                         <div className="basketMin__sum">
                             <MyBlock>
                                 <div className="basketMin__block">
                                     <div className='basketMin__text'>
-                                        <MySpan>Итоговая стоимость:</MySpan><div>{basket.sum} руб.</div> 
+                                        <MySpan>Итоговая стоимость:</MySpan><div>{basketSum} руб.</div> 
                                     </div>
                                     <MyHr/>
                                     <div className="basketMin__promotion">Зайдите в <Link to={CABINET_ROUTE} className="basketMin__link">личный кабинет</Link>, чтобы проверить вашу СКИДКУ!</div>

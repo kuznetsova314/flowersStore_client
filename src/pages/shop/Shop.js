@@ -1,20 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from "./Shop.module.css";
 import Intro from '../../components/shopSections/intro/Intro';
 import Advantage from '../../components/shopSections/advantage/Advantage';
 import Products from '../../components/shopSections/products/Products';
 import {useProducts} from "../../hooks/useProducts";
-import { observer } from 'mobx-react-lite';
-import { Context } from '../../index';
 import Steps from '../../components/shopSections/steps/Steps';
 import ShopReviews from '../../components/shopSections/shopReviews/ShopReviews';
 import Description from '../../components/shopSections/description/Description';
 import { fetchBouquets } from '../../http/productAPI';
-import { Link } from 'react-router-dom';
-import { REVIEWS_ROUTE } from '../../utils/consts';
 
-const Shop = observer(() => {
-    const {product} = useContext(Context);
+const Shop = () => {
     const [products, setProducts] = useState([])
     const [sorting, setSorting] = useState({sort: '', query: ''});
     const [filter, setFilter] = useState([]);
@@ -51,6 +46,6 @@ const Shop = observer(() => {
             <Description />
         </main>
     );
-});
+};
 
 export default Shop;

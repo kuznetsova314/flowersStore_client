@@ -1,20 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MyBlock from '../../components/UI/block/MyBlock';
 import BreadCrumbs from '../../components/UI/breadCrumbs/BreadCrumbs';
 import MyQuantity from '../../components/UI/quantity/MyQuantity';
 import MyRadio from '../../components/UI/radio/MyRadio';
-import { Context } from '../../index';
 import { SHOP_ROUTE } from '../../utils/consts';
 import "./ProductPage.css";
 import MySpan from '../../components/UI/MySpan/MySpan';
 import MyButton from '../../components/UI/MyButton/MyButton';
-import { observer } from 'mobx-react-lite';
 import AddProduct from '../../components/addProduct/AddProduct';
 import { useParams } from 'react-router-dom';
-import { createBasketItem, fetchOneBouquet } from '../../http/productAPI';
+import { fetchOneBouquet } from '../../http/productAPI';
+import { useAddBasket } from '../../hooks/useAddBasket';
 
-const ProductPage = observer(() => {
-    const {user} = useContext(Context);
+const ProductPage = () => {
     const blank = {
         id: 0, 
         name: "", 
@@ -33,6 +31,7 @@ const ProductPage = observer(() => {
     const [count, setCount] = useState(1);
     const [sum, setSum] = useState(activePrice);
     const {id} = useParams();
+    const {addBasket} = useAddBasket();
     useEffect (() => {
         fetchOneBouquet(id).then(data => {
         setBouquet(data);
@@ -43,20 +42,6 @@ const ProductPage = observer(() => {
     useEffect(() => {
         setSum(+activePrice * +count)
     }, [activePrice, count]); 
-    const addBasket = () => {
-        if(!user.isAuth) {
-            alert("Корзина недоступна для неавторизованных пользователей");
-        } else {
-            const basketPrice = bouquet.price.find(item => item.value === activePrice);
-            const formData = new FormData();
-            formData.append("userId", user.user.id);
-            formData.append("product", JSON.stringify(bouquet));
-            formData.append("price", JSON.stringify(basketPrice));
-            formData.append("count", count);
-            createBasketItem(formData).then(data => alert(data))
-            
-        }
-    };
     
     return (
         <main>
@@ -105,7 +90,7 @@ const ProductPage = observer(() => {
                                             <MySpan>Сумма:</MySpan>
                                             <div className="pi__sum">{sum} руб.</div>
                                         </div>
-                                        <MyButton onClick={addBasket} size={"small"}>В корзину</MyButton>
+                                        <MyButton onClick={() => addBasket(bouquet, count, activePrice)} size={"small"}>В корзину</MyButton>
                                     </MyBlock>
                                 </div>
                                 
@@ -119,6 +104,6 @@ const ProductPage = observer(() => {
             <AddProduct />
         </main>
     );
-});
+};
 
 export default ProductPage;

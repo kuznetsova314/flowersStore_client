@@ -1,25 +1,16 @@
-import { observer } from 'mobx-react-lite';
-import React, { useContext, useEffect, useState } from 'react';
-import { Context } from '../../index';
+import React from 'react';
 import BreadCrumbs from '../../components/UI/breadCrumbs/BreadCrumbs';
 import "./Basket.css";
-import { SHOP_ROUTE, CABINET_ROUTE, ORDERING_ROUTE, userId } from '../../utils/consts';
+import { SHOP_ROUTE, CABINET_ROUTE, ORDERING_ROUTE } from '../../utils/consts';
 import BasketCard from '../../components/basketCard/BasketCard';
 import { Link, useNavigate } from 'react-router-dom';
 import MySpan from '../../components/UI/MySpan/MySpan';
 import MyButton from '../../components/UI/MyButton/MyButton';
-import { fetchBasket } from '../../http/productAPI';
+import { useBasket } from '../../hooks/useBasket';
 
-const Basket = observer(() => {
+const Basket = () => {
     const navigate = useNavigate();
-    const {user} = useContext(Context);
-    const [basket, setBasket] = useState([]);
-    
-    useEffect (() => {
-        console.log(userId())
-        fetchBasket(userId()).then(data => setBasket(data))
-        
-    }, [])
+    const [basket, basketSum, setChangeCount, deleteProduct] = useBasket()
     
     return (
         <main>
@@ -33,7 +24,13 @@ const Basket = observer(() => {
                     <div className="basket__inner">
                         <h1 className="basket__title">Корзина</h1>
                         {basket.map(p =>
-                            <BasketCard variant={"simple"} key={p.id} p={p} />
+                            <BasketCard 
+                                setChangeCount={setChangeCount}
+                                deleteProduct={id => deleteProduct(id)} 
+                                variant={"simple"} 
+                                key={p.id} 
+                                p={p} 
+                            />
                         )}
                         <div className="basket__block">
                             <div className="basket__promotion">Зайдиете в <Link 
@@ -43,7 +40,9 @@ const Basket = observer(() => {
                                 </Link>
                                 , чтобы проверить вашу СКИДКУ!
                             </div>
-                            <div className="basket__sum"><MySpan>Итого: </MySpan><b className="basket__value">{basket.sum} руб.</b></div>
+                            <div className="basket__sum">
+                                <MySpan>Итого: </MySpan><b className="basket__value">{basketSum} руб.</b>
+                            </div>
                         </div>
                         <div className="basket__center">
                         <MyButton 
@@ -58,6 +57,6 @@ const Basket = observer(() => {
             </section> 
         </main>
     );
-});
+};
 
 export default Basket;

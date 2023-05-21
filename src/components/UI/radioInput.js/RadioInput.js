@@ -22,7 +22,7 @@ const RadioInput = ({list, setActive, radioId}) => {
                         value={l.value} 
                         id={l.value}
                         />
-                    <label for={l.value} className="ri__label">
+                    <label htmlFor={l.value} className="ri__label">
                         {l.name}
                     </label>
                 </div>

@@ -14,7 +14,14 @@ export const PROMOTIONS_ROUTE = '/promotions';
 export const QUESTIONS_ROUTE = '/questions';
 export const REVIEWS_ROUTE = '/reviews';
 export const userId = () => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token');
     const jwtInfo = jwtDecode(token);
     return jwtInfo.id
+}
+export const isAuth = () => {
+    const token = localStorage.getItem('token');
+    if(token) {
+        return true;
+    }
+    return false;
 }

@@ -1,23 +1,15 @@
-import { observer } from 'mobx-react-lite';
-import React, { useContext } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Context } from '../../../index';
 import { PRODUCT_ROUTE } from '../../../utils/consts';
 import MyButton from '../MyButton/MyButton';
 import MyTag from '../tag/MyTag';
 import classes from "./ProductCard.module.css";
-import {createObjBasket} from "../../../utils/createObjBasket";
+import { useAddBasket } from '../../../hooks/useAddBasket';
 
-const ProductCard = observer(({product}) => {
+const ProductCard = ({product}) => {
     const navigate = useNavigate();
-    const {basket} = useContext(Context);
-    const addBasket = () => {
-        const count = 1;
-        const basketItem = createObjBasket(product, product.price[0], count);
-        basket.setProducts([...basket.products, basketItem])
-        const json = JSON.stringify(basket.products)
-        console.log(json)
-    }
+    const {addBasket} = useAddBasket();
+    const count = 1;
     return (
         <div >
             <div className={classes.card}>
@@ -41,12 +33,12 @@ const ProductCard = observer(({product}) => {
                         <div className={classes.card__text}>Стоимость:</div>
                         <div className={classes.card__price}>{product.price[0].value}</div>
                     </div>
-                    <MyButton size={"small"} onClick={addBasket}>В корзину</MyButton>
+                    <MyButton size={"small"} onClick={() => addBasket(product, count, product.price[0].value)}>В корзину</MyButton>
                 </div>
                 
             </div>
         </div>
     );
-});
+};
 
 export default ProductCard;

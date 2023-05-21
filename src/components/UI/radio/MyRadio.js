@@ -25,7 +25,7 @@ const MyRadio = ({list, setActivePrice}) => {
                         value={l.value} 
                         id={l.value}
                         />
-                    <label for={l.value} className="myRadio__label">
+                    <label htmlFor={l.value} className="myRadio__label">
                         <div className="myRadio__title">{l.size}</div>
                         <div className="myRadio__text">{l.value}</div>
                     </label>
