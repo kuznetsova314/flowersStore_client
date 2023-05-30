@@ -10,7 +10,9 @@ export function useBasket (id) {
     
     useEffect (() => {
         try {
-            fetchBasket(userId()).then(data => setBasket(data))
+            fetchBasket(userId()).then(data => {
+                setBasket(data)
+            })
         } catch(e) {
             console.log(e)
         }

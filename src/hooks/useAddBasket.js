@@ -14,7 +14,7 @@ export const useAddBasket = () => {
             formData.append("count", count);
             for (let [key, value] of formData) {
                 console.log(`${key} - ${value}`)
-              }
+            }
             
             createBasketItem(formData).then(data => alert(data))
             

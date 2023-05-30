@@ -40,6 +40,10 @@
 .order__secrecy {
     margin: 2rem 2rem 0;
 }
+.order__secrecy input {
+    width: auto;
+    height: auto;
+}
 
 .order__inputs {
     display: flex;

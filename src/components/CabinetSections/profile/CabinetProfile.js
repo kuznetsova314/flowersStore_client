@@ -16,7 +16,7 @@ const CabinetProfile = observer(({visible, setVisible}) => {
     return (
         <div className="cabinetProfil__inner">
             <MyModal visible={visible} setVisible={setVisible}>
-                <ClientEdit setVisible={setVisible} user={user.user}/>
+                <ClientEdit setUser={data => user.setUser(data)} setVisible={setVisible} user={user.user}/>
             </MyModal>
             <BreadCrumbs list={[
                 {name: "Главная", to: SHOP_ROUTE},

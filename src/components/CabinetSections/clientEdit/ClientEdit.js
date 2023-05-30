@@ -2,16 +2,25 @@ import React, { useState } from 'react';
 import "./ClientEdit.css";
 import { RxCross1 } from "react-icons/rx";
 import MyButton from '../../UI/MyButton/MyButton';
+import { changeInfo } from '../../../http/userAPI';
 
-const ClientEdit = ({setVisible, user}) => {
+const ClientEdit = ({setVisible, user, setUser}) => {
     const [fullName, setFullname] = useState(user.fullName);
     const [phone, setPhone] = useState(user.phone);
     const [city, setCity] = useState(user.city);
     const [address, setAddress] = useState(user.address);
+
     
     const saveChanges = () => {
         const newUser = {fullName: fullName, phone: phone, city: city, address: address};
-        console.log(newUser)
+        try {
+            changeInfo(newUser).then(data => {
+                setUser(data);
+                setVisible(false);
+            })
+        } catch(e) {
+            alert(e.response.data.message)
+        }
     }
 
     return (

@@ -1,41 +1,50 @@
-import React, { createElement, useCallback, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import BreadCrumbs from '../../UI/breadCrumbs/BreadCrumbs';
 import "./CabinetChangePassword.css";
 import { CABINET_ROUTE, SHOP_ROUTE } from '../../../utils/consts';
 import MySpan from '../../UI/MySpan/MySpan';
 import MyButton from '../../UI/MyButton/MyButton';
+import { changePassword } from '../../../http/userAPI';
+import { observer } from 'mobx-react-lite';
+import { Context } from '../../..';
 
-const CabinetChangePassword = ({setVariant}) => {
+const CabinetChangePassword = observer(({setVariant}) => {
     const [password, setPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [newPasswordSecond, setNewPasswordSecond] = useState('');
     const [passwordError, setPasswordError] = useState('')
-    const [passwordDirty, setPasswordDirty] = useState(true)
-    
-    const passwordHandler = (e) => {
-        setNewPassword(e.target.value)
-        console.log(newPassword)
-    }
-    const passwordHandlerSecond = (e) => {
-        setNewPasswordSecond(e.target.value)
-        console.log(newPasswordSecond)
-    }
+    const [badPassword, setBadPassword] = useState(false)
+    const {user} = useContext(Context);
+
     function checkPasswords() {
         if(newPassword !== newPasswordSecond) {
             setPasswordError("Пароли не совпадают")
-            setPasswordDirty(true)
-            
-        } else if (newPassword < 4) {
-            setPasswordError("Слишком короткий пароль")
-            setPasswordDirty(true)
+            setBadPassword(false)
+        } else if (newPassword.length < 4) {
+            setPasswordError("Слишком короткий пароль") 
+            setBadPassword(false)
         } else {
             setPasswordError("")
-            setPasswordDirty(false)
+            setBadPassword(true)
+            createPassword()
         }
+        
     }
     function createPassword() {
-        checkPasswords()
-        passwordDirty ? console.log("Отклонено") : console.log("Отправлено")
+        try {
+            changePassword({
+                phone: user.user.phone, 
+                oldPassword: password, 
+                newPassword: newPassword
+            }).then(data => {
+                console.log(JSON.stringify(data))
+                setBadPassword(false)
+            }
+                )
+        } catch(e) {
+            alert(e.response.data.message)
+        }
+        
         
     }
     const removePasswords = () => {
@@ -57,19 +66,19 @@ const CabinetChangePassword = ({setVariant}) => {
                     <div className="ccp__name">Текущий пароль</div>
                     <input value={password} type="password" required className="ccp__input"  onChange={(e) => setPassword(e.target.value)}/>
                     <div className="ccp__name">Новый пароль</div>
-                    <input value={newPassword} type="password"  required className="ccp__input" onFocus={() => setPasswordError('')} onChange={(e) => passwordHandler(e)}/>
+                    <input value={newPassword} type="password"  required className="ccp__input" onChange={(e) => setNewPassword(e.target.value)}/>
                     <div className="ccp__name">Повторите <MySpan>новый</MySpan> пароль</div>
-                    <input value={newPasswordSecond} type="password" required className="ccp__input" onFocus={() => setPasswordError('')} onChange={(e) => passwordHandlerSecond(e)}/>
-                    {passwordDirty && <div className='ccp__error'>{passwordError}</div>}
+                    <input value={newPasswordSecond} type="password" required className="ccp__input" onChange={(e) => setNewPasswordSecond(e.target.value)}/>
+                    {!badPassword && <div className='ccp__error'>{passwordError}</div>}
                     <div className="ccp__flex">
                         <MyButton size={"gray"} onClick={() => removePasswords()}>Отмена</MyButton>
-                        <MyButton size={"small"} onClick={() => createPassword()}>Сохранить</MyButton>
+                        <MyButton size={"small"} onClick={() => checkPasswords()}>Сохранить</MyButton>
                     </div>
                 </div>
             </div>
             
         </div>
     );
-};
+});
 
 export default CabinetChangePassword;

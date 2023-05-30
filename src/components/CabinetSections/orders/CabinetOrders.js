@@ -3,12 +3,25 @@ import "./CabinetOrders.css";
 import { observer } from 'mobx-react-lite';
 import {Context} from "../../../index";
 import BreadCrumbs from '../../UI/breadCrumbs/BreadCrumbs';
-import { CABINET_ROUTE, SHOP_ROUTE } from '../../../utils/consts';
+import { CABINET_ROUTE, SHOP_ROUTE, userId } from '../../../utils/consts';
 import MyHr from '../../UI/hr/MyHr';
 import { getDate } from '../../../utils/changeDate';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { fetchOrders } from '../../../http/productAPI';
 
 const CabinetOrders = observer(() => {
-    const {user} = useContext(Context);
+    // const {user} = useContext(Context);
+    const [orders, setOrders] = useState([]);
+    useEffect(() => {
+        try {
+            fetchOrders(userId()).then(data => {
+                setOrders(data);
+            })
+        } catch(e) {
+            alert(e.response.data.message)
+        }
+    }, [])
     function transleteWords(word) {
         let temp = word === "delivered" ? "Доставлено" : 
             word === "handling" ? "В обработке" : 
@@ -23,7 +36,7 @@ const CabinetOrders = observer(() => {
                 {name: "Мои заказы", to: null},
             ]}/>
             <div className="co__inner">
-                {user.orders.map(o =>
+                {orders.map(o =>
                    <div key={o.number}>
                         <div className="co__items">
                             <div className="co__left">

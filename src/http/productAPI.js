@@ -87,3 +87,15 @@ export const fetchOneTextReview = async(id) => {
     const {data} = await $host.get('api/reviewText/' + id);
     return data;
 }
+
+// Ordering
+
+
+export const createOrderItem = async (order) => {
+    const {data} = await $authHost.post('api/orders', order);
+    return data;
+}
+export const fetchOrders = async (userId) => {
+    const {data} = await $authHost.get('api/orders', {params: {userId: userId}});
+    return data;
+}

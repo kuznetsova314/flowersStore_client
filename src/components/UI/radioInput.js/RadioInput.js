@@ -16,7 +16,7 @@ const RadioInput = ({list, setActive, radioId}) => {
                 >
                     <input 
                         className="ri__input"
-                        onChange={e => setActive(e.target.value)}
+                        onChange={e => setActive(e)}
                         type="radio"
                         name={radioId} 
                         value={l.value} 
